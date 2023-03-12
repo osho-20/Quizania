@@ -1,3 +1,125 @@
+/* @charset "utf-8";
+@import url(http://weloveiconfonts.com/api/?family=fontawesome); */
+
 .App {
   text-align: center;
 }
+
+li {
+  list-style: none;
+
+}
+
+.toggle {
+  display: inline-flex;
+  width: 100%;
+  height: 5em;
+  background-color: blue;
+  justify-content: space-between;
+}
+
+.hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 50px;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  margin: 4% 4%;
+}
+
+.title {
+  color: black;
+  font-size: 180%;
+  font-family: 'Quicksand', sans-serif;
+  display: inline-flex;
+  margin: 15px 50px;
+  float: right;
+}
+
+
+.menu {
+  width: 200px;
+  padding: 0%;
+  margin: 0%;
+  height: 90px;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease-in-out;
+}
+
+.item {
+  transition: 0.5s ease;
+}
+
+.burger-bar {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
+}
+
+.hidden {
+  display: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.visible {
+  display: inherit;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+@media(max-width:2000px) {
+  .hamburger {
+    display: block;
+  }
+
+  .burger-bar.clicked:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-bar.clicked:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  .burger-bar.clicked:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+}
+
+
+/* a {
+  color: black;
+  padding: 3px;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+  border-radius: 4px;
+} */
+
+/* .item a:hover {
+  color: #00FFF5;
+  box-shadow: 0.5px 0.5px 0.5px #00ADB5;
+} */
+
+/* ::selection {
+  color: rgb(23, 20, 20);
+  background-color: rgb(145, 145, 145);
+} */
+
+/* .hamburger {
+  position: fixed;
+} */
