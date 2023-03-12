@@ -29,10 +29,10 @@ export default function Header() {
             </nav>
             <div >
                 <ul className={menu} >
-                    <li className="menu1"><a href="about.html">ABOUT ME</a></li>
-                    <li className="menu1"><a href="project.html">PROJECTS</a></li>
-                    <li className="menu1"><a href="gallery.html">GALLERY</a></li>
-                    <li className="menu1"><a href="contact.html">CONTACT ME</a></li>
+                    <li className="menu1"><a className="a" href="about.html">ABOUT ME</a></li>
+                    <li className="menu1"><a className="a" href="project.html">PROJECTS</a></li>
+                    <li className="menu1"><a className="a" href="gallery.html">GALLERY</a></li>
+                    <li className="menu1"><a className="a" href="contact.html">CONTACT ME</a></li>
                 </ul>
             </div>
         </div >
