@@ -18,21 +18,23 @@ export default function Header() {
     return (
         <div>
             <nav class="toggle">
-                <div class="hamburger">
+                <div class="burger">
                     <div onClick={updateMenu}>
                         <span className={bar} ></span>
                         <span className={bar} ></span>
                         <span className={bar} ></span>
                     </div>
                 </div>
-                <div class="title"><b> PORTFOLIO</b></div>
+                <div class="title">PORTFOLIO</div>
             </nav>
-            <ul className={menu} >
-                <li className="menu"><b><a href="about.html">ABOUT ME</a></b></li>
-                <li className="menu"><b><a href="project.html">PROJECTS</a></b></li>
-                <li className="menu"><b><a href="gallery.html">GALLERY</a></b></li>
-                <li className="menu"><b><a href="contact.html">CONTACT ME</a></b></li>
-            </ul>
+            <div >
+                <ul className={menu} >
+                    <li className="menu1"><a href="about.html">ABOUT ME</a></li>
+                    <li className="menu1"><a href="project.html">PROJECTS</a></li>
+                    <li className="menu1"><a href="gallery.html">GALLERY</a></li>
+                    <li className="menu1"><a href="contact.html">CONTACT ME</a></li>
+                </ul>
+            </div>
         </div >
     )
 }
