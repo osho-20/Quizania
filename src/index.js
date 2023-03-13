@@ -5,6 +5,7 @@ import App from './App';
 import About from './pages/about';
 import Contact from './pages/contact_me';
 import Project from './pages/projects';
+import Error from './pages/error404';
 import Gallery from './pages/gallery';
 import reportWebVitals from './reportWebVitals';
 import {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/projects",
     element: <Project />,
+  },
+  {
+    path: "/*",
+    element: <Error />,
   },
 ]);
 
