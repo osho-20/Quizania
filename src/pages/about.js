@@ -7,7 +7,7 @@ function About() {
         document.title = 'Home';
     }, [])
     const [page, setPage] = useState({
-        value: 'ABOUT',
+        value: 'ABOUT ME',
     })
     return (
         <div className="App">
