@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './component/Header'
 import Footer from './component/Footer'
@@ -7,10 +7,13 @@ function App() {
   useEffect(() => {
     document.title = 'Home';
   }, [])
+  const [page, setPage] = useState({
+    value: 'PORTFOLIO',
+  })
   return (
     <div className="App">
       <header>
-        <Header />
+        <Header Page={{ page: page }} />
       </header>
       <section>
         <Content />
