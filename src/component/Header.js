@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../App.css'
+import { Link } from 'react-router-dom';
 export default function Header() {
     const [bar, setBar] = useState("burger-bar unclicked");
     const [menu, setMenu] = useState("menu hidden");
@@ -16,7 +17,7 @@ export default function Header() {
         setIsMenuClicked(!isMenuClicked);
     }
     return (
-        <div>
+        <div style={{ height: '5em' }}>
             <nav class="toggle">
                 <div class="burger">
                     <div onClick={updateMenu}>
@@ -29,10 +30,11 @@ export default function Header() {
             </nav>
             <div >
                 <ul className={menu} >
-                    <li className="menu1"><a className="a" href="about.html">ABOUT ME</a></li>
-                    <li className="menu1"><a className="a" href="project.html">PROJECTS</a></li>
-                    <li className="menu1"><a className="a" href="gallery.html">GALLERY</a></li>
-                    <li className="menu1"><a className="a" href="contact.html">CONTACT ME</a></li>
+                    <li className="menu1" ><Link className="a" to="/My-Portfolio">Home</Link></li>
+                    <li className="menu1"><Link className="a" to="/about">About Me</Link></li>
+                    <li className="menu1"><Link className="a" to="/projects">Projects</Link ></li>
+                    <li className="menu1"><Link className="a" to="/gallery">Gallery</Link ></li>
+                    <li className="menu1"><Link className="a" to="/contact">Contact Me</Link ></li>
                 </ul>
             </div>
         </div >

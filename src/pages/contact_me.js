@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import './App.css';
-import Header from './component/Header'
-import Footer from './component/Footer'
-import Content from './component/content'
+import '../App.css';
+import Header from '../component/Header'
+import Footer from '../component/Footer'
 function App() {
   useEffect(() => {
     document.title = 'Home';
@@ -13,7 +12,6 @@ function App() {
         <Header />
       </header>
       <section>
-        <Content />
       </section>
       <footer id="footer">
         <Footer />
