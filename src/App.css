@@ -128,9 +128,11 @@ li.menu1:hover {
 
 #footer {
   position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  height: 10%;
+  padding-bottom: 90px;
   background-color: #111111;
 }
 
