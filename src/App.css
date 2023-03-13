@@ -72,6 +72,7 @@ li {
   font-family: 'poppins';
   justify-content: center;
   align-items: center;
+  opacity: 0.9999999;
 }
 
 .menu1 {
@@ -230,7 +231,4 @@ li.menu1:hover {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-
-
-
 }
