@@ -72,7 +72,6 @@ li {
   font-family: 'poppins';
   justify-content: center;
   align-items: center;
-  opacity: 0.9999999;
 }
 
 .menu1 {
@@ -85,8 +84,8 @@ li {
 
 .burger-bar {
   display: block;
-  width: 25px;
-  height: 2px;
+  width: 35px;
+  height: 3px;
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -98,10 +97,12 @@ li {
 }
 
 .burger-bar.clicked:nth-child(1) {
+  width: 40px;
   transform: translateY(7.5px) rotate(45deg);
 }
 
 .burger-bar.clicked:nth-child(3) {
+  width: 40px;
   transform: translateY(-7.5px) rotate(-45deg);
 }
 
@@ -111,6 +112,7 @@ li {
 
 .visible {
   display: inherit;
+  opacity: 0.999999;
 }
 
 .burger:hover {

@@ -29,7 +29,7 @@ export default function Header(props) {
                 </div>
                 <div class="title">{title}</div>
             </nav>
-            <div >
+            <div className="trans">
                 <ul className={menu}>
                     <li className="menu1" ><Link className="a" to="/My-Portfolio" id="PORTFOLIO" >Home</Link></li>
                     <li className="menu1" ><Link className="a" to="/about" id="ABOUT ME">About Me</Link></li>

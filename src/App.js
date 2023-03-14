@@ -3,6 +3,7 @@ import './App.css';
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Content from './component/content'
+import BackGround from './component/background'
 function App() {
   useEffect(() => {
     document.title = 'Home';
@@ -12,6 +13,7 @@ function App() {
   })
   return (
     <div className="App">
+      <BackGround />
       <header>
         <Header Page={{ page: page }} />
       </header>
@@ -21,6 +23,7 @@ function App() {
       <footer id="footer">
         <Footer />
       </footer>
+
     </div>
   );
 }
