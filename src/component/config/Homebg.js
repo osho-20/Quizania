@@ -39,12 +39,12 @@ export default function Particle() {
                                 mode: "grab",
                                 parallax: {
                                     enable: true,
-                                    force: 60,
-                                    smooth: 10
+                                    force: 10,
+                                    smooth: 20
                                 }
                             },
                             resize: {
-                                delay: 0.5,
+                                delay: 0.1,
                                 enable: true
                             }
                         },
@@ -73,14 +73,14 @@ export default function Particle() {
                                 }
                             },
                             connect: {
-                                distance: 80,
+                                distance: 40,
                                 links: {
                                     opacity: 0.5
                                 },
-                                radius: 60
+                                radius: 40
                             },
                             grab: {
-                                distance: 400,
+                                distance: 300,
                                 links: {
                                     blink: false,
                                     consent: false,
