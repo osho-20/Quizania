@@ -27,7 +27,7 @@ export default function Particle() {
                         detectsOn: "window",
                         events: {
                             onClick: {
-                                enable: true,
+                                enable: false,
                                 mode: "push"
                             },
                             onDiv: {
@@ -88,7 +88,7 @@ export default function Particle() {
                                 }
                             },
                             push: {
-                                default: true,
+                                default: false,
                                 quantity: 4
                             },
                             remove: {

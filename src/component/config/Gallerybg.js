@@ -26,7 +26,7 @@ export default function Particle() {
                     interactivity: {
                         events: {
                             onClick: {
-                                enable: true,
+                                enable: false,
                                 mode: "slow",
                             },
                             onHover: {
