@@ -17,20 +17,24 @@ export default function Header(props) {
         }
         setIsMenuClicked(!isMenuClicked);
     }
+    // const [title, setTitle] = useState('PORTFOLIO');
+    // const updateTitle = (event) => {
+    //     console.log(event.target.id);
+    // }
     return (
         <div style={{ height: '5em' }}>
-            <nav class="toggle">
-                <div class="burger">
+            <nav className="toggle">
+                <div className="burger">
                     <div onClick={updateMenu}>
                         <span className={bar} ></span>
                         <span className={bar} ></span>
                         <span className={bar} ></span>
                     </div>
                 </div>
-                <div class="title">{title}</div>
+                <div className="title">{title}</div>
             </nav>
             <div className="trans">
-                <ul className={menu}>
+                <ul className={menu} >
                     <li className="menu1" ><Link className="a" to="/My-Portfolio" id="PORTFOLIO" >Home</Link></li>
                     <li className="menu1" ><Link className="a" to="/about" id="ABOUT ME">About Me</Link></li>
                     <li className="menu1" ><Link className="a" to="/projects" id="PROJECTS">Projects</Link ></li>

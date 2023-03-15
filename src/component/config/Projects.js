@@ -286,7 +286,7 @@ export default function Particle() {
                                 height: 1080
                             },
                             limit: 0,
-                            value: 80
+                            value: 50
                         },
                         opacity: {
                             random: {

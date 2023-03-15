@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Route} from 'react-router-dom';
 import '../App.css'
-export default function Header() {
+export default function Content() {
     return (
         <div style={{ textAlign: 'center' }}>
             <div class="content_home">

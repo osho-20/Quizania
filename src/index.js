@@ -9,11 +9,11 @@ import Error from './pages/error404';
 import Gallery from './pages/gallery';
 import reportWebVitals from './reportWebVitals';
 import {
-  createBrowserRouter,
   RouterProvider,
+  createHashRouter
 } from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/My-Portfolio",
     element: <App />,

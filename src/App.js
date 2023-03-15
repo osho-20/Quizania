@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Content from './component/content'
 import Particles from './component/config/Homebg'
 export default function App() {
-  useEffect(() => {
-    document.title = 'Home';
-  }, [])
   const [page, setPage] = useState({
     value: 'PORTFOLIO',
   })

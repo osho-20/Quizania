@@ -1,5 +1,5 @@
 {
-  "homepage": "https://osho-20.github.io/My-Portfolio",
+  "homepage": "https://osho-20.github.io/My-Portfolio/#",
   "name": "portfolio_react",
   "version": "0.1.0",
   "private": true,
@@ -48,6 +48,5 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }
