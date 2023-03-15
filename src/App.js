@@ -3,7 +3,8 @@ import './App.css';
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Content from './component/content'
-function App() {
+import Particles from './component/Particle'
+export default function App() {
   useEffect(() => {
     document.title = 'Home';
   }, [])
@@ -11,11 +12,13 @@ function App() {
     value: 'PORTFOLIO',
   })
   return (
+
     <div className="App">
       <header>
         <Header Page={{ page: page }} />
       </header>
       <section>
+        <Particles />
         <Content />
       </section>
       <footer id="footer">
@@ -26,4 +29,3 @@ function App() {
   );
 }
 
-export default App;
