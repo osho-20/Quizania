@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Header from '../component/Header'
 import Footer from '../component/Footer'
+import Background from '../component/config/Projects'
 function Projects() {
   useEffect(() => {
     document.title = 'Home';
@@ -15,6 +16,7 @@ function Projects() {
         <Header Page={{ page: page }} />
       </header>
       <section>
+        <Background />
       </section>
       <footer id="footer">
         <Footer />

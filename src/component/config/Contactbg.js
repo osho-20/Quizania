@@ -27,7 +27,7 @@ export default function Particle() {
                         events: {
                             onClick: {
                                 enable: true,
-                                mode: "push",
+                                mode: "slow",
                             },
                             onHover: {
                                 enable: true,
@@ -36,7 +36,7 @@ export default function Particle() {
                             resize: true,
                         },
                         modes: {
-                            push: {
+                            slow: {
                                 quantity: 4,
                             },
                             repulse: {
@@ -53,7 +53,7 @@ export default function Particle() {
                             color: "#ffffff",
                             distance: 130,
                             enable: true,
-                            opacity: 0.99,
+                            opacity: 0.5,
                             width: 1,
                         },
                         collisions: {
@@ -83,7 +83,7 @@ export default function Particle() {
                             type: "circle",
                         },
                         size: {
-                            value: { min: 1, max: 4 },
+                            value: { min: 1, max: 3 },
                         },
                     },
                     detectRetina: true,

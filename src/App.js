@@ -3,7 +3,7 @@ import './App.css';
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Content from './component/content'
-import Particles from './component/Particle'
+import Particles from './component/config/Homebg'
 export default function App() {
   useEffect(() => {
     document.title = 'Home';
