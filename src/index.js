@@ -15,7 +15,7 @@ import {
 
 const router = createHashRouter([
   {
-    path: "/My-Portfolio",
+    path: "/",
     element: <App />,
   },
   {
