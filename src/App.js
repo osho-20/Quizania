@@ -9,19 +9,17 @@ export default function App() {
     value: 'PORTFOLIO',
   })
   return (
-
     <div className="App">
       <header>
         <Header Page={{ page: page }} />
       </header>
-      <section>
+      <div id="content-wrap">
         <Particles />
         <Content />
-      </section>
-      <footer id="footer">
+      </div>
+      <footer className="footer">
         <Footer />
       </footer>
-
     </div>
   );
 }
