@@ -34,7 +34,7 @@ export default function Header(props) {
                 <div className="title">{title}</div>
             </nav>
             <div className="trans">
-                <ul className={menu} style={{ position: 'relative', zIndex: '2' }} >
+                <ul className={menu} style={{ position: 'relative', zIndex: '1' }} >
                     <li className="menu1" ><Link className="a" to="/" id="PORTFOLIO" >Home</Link></li>
                     <li className="menu1" ><Link className="a" to="/about" id="ABOUT ME">About Me</Link></li>
                     <li className="menu1" ><Link className="a" to="/projects" id="PROJECTS">Projects</Link ></li>
