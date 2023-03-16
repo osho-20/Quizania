@@ -207,7 +207,7 @@ li.menu1:hover {
   color: whitesmoke;
   background-color: #1e1d1d;
   padding: 25px 50px;
-  margin: 80px 180px;
+  margin: 10% 80px;
   margin-bottom: 0px;
   font-size: 145%;
   border-radius: 2em;
@@ -237,8 +237,8 @@ li.menu1:hover {
 
   .content_home {
     font-size: 100%;
-    margin: 20px;
-    margin-bottom: 0px;
+    margin: 30% 20px;
+    /* margin-bottom: 0px; */
   }
 
 }
@@ -249,9 +249,11 @@ li.menu1:hover {
   }
 
   .content_home {
+
     font-size: 80%;
-    margin: 20px;
-    margin-bottom: 0px;
+    margin: 40% 20px;
+    /* margin-bottom: 0px; */
+    /* margin-top: 190px; */
   }
 }
 
@@ -262,7 +264,7 @@ li.menu1:hover {
 
   .content_home {
     font-size: 75%;
-    margin: 20px;
-    margin-bottom: 0px;
+    margin: 50% 20px;
+    /* margin-bottom: 0px; */
   }
 }
