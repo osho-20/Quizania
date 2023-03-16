@@ -39,7 +39,7 @@ export default function Particle() {
                                 mode: "grab",
                                 parallax: {
                                     enable: true,
-                                    force: 10,
+                                    force: 20,
                                     smooth: 20
                                 }
                             },

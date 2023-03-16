@@ -27,8 +27,15 @@ export default function Content() {
                     </p>
                 </div>
                 <div className="content_home" onClick={click} >
-                    <p>Would you like to know more about my skills?...<br />Here is my resume link given below. <br /> Just click on the link.</p>
-                    <p id="resume"><a href="https://drive.google.com/file/d/1ON8UixYq51JGIS63fvEgpEP8U5T-59wQ/view?usp=share_link" target="_blank"><b>RESUME...</b> </a></p>
+                    <p>I have shared my resume with you to provide more information about my skills 
+                        <br/>I have included the link below, please feel free to access it.</p>
+                    <p id="resume"><a href="https://drive.google.com/file/d/1ON8UixYq51JGIS63fvEgpEP8U5T-59wQ/view?usp=share_link" target="_blank"><b><TypeWriter
+                        options={{
+                            strings: ['Resume...'],
+                            autoStart: true,
+                            loop: true,
+                        }}
+                    /></b> </a></p>
                 </div>
             </ReactCardFlip >
         </div >
