@@ -18,7 +18,7 @@ function Gallery() {
       <section>
         <Background />
       </section>
-      <footer id="footer">
+      <footer className="footer">
         <Footer />
       </footer>
     </div>
