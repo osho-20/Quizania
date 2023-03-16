@@ -35,6 +35,7 @@ li {
   background: #999;
 }
 
+/*----------------------------------header-------------------------------*/
 .toggle {
   display: inline-flex;
   width: 100%;
@@ -137,18 +138,18 @@ li.menu1:hover {
 
 .content-wrap {
   padding-bottom: 2.5em;
-  ;
+  /* position: relative;
+  z-index: -2;
+  width: 100%; */
 }
 
+/*-----------------------------------------------------------footer--------------------------------------*/
 .footer {
   position: absolute;
   width: 100%;
-  /* top: 100%; */
   left: 0;
   right: 0;
   bottom: 0;
-  /* margin: auto; */
-  /* max-height: 20px; */
   z-index: -1;
 }
 
@@ -162,14 +163,11 @@ li.menu1:hover {
   margin-bottom: 32px;
   margin-right: 4%;
   margin-left: 4%;
-  padding-bottom: 20px;
-
 }
 
 .footer nav {
   text-align: center;
   justify-content: space-evenly;
-  margin-bottom: 2px;
 }
 
 .bg {
@@ -204,7 +202,7 @@ li.menu1:hover {
   color: green;
 }
 
-
+/*-------------------------------------------------------------Home content---------------------------------------*/
 .content_home {
   color: whitesmoke;
   background-color: #1e1d1d;
@@ -231,12 +229,6 @@ li.menu1:hover {
   font-family: 'Comfortaa';
 }
 
-#con {
-  padding-bottom: 70px;
-  max-height: 1200px;
-  /* margin-bottom: 50px; */
-}
-
 @media screen and (min-width:500px) and (max-width :700px) {
   .content_home h1 {
     font-size: 180%;
@@ -247,7 +239,6 @@ li.menu1:hover {
     font-size: 100%;
     margin: 20px;
     margin-bottom: 0px;
-    padding-bottom: 20px;
   }
 
 }
@@ -261,7 +252,6 @@ li.menu1:hover {
     font-size: 80%;
     margin: 20px;
     margin-bottom: 0px;
-    padding-bottom: 20px;
   }
 }
 
@@ -274,8 +264,5 @@ li.menu1:hover {
     font-size: 75%;
     margin: 20px;
     margin-bottom: 0px;
-    padding-bottom: 20px;
   }
 }
-
-/*------------------------------------------*/

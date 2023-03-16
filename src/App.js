@@ -13,7 +13,7 @@ export default function App() {
       <header>
         <Header Page={{ page: page }} />
       </header>
-      <div id="content-wrap">
+      <div id="content-wrap" style={{ position: 'relative', zIndex: '0', width: '100%' }}>
         <Particles />
         <Content />
       </div>
