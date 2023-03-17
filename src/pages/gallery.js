@@ -17,7 +17,7 @@ function Gallery() {
     value: 'GALLERY',
   })
   return (
-    <div className="Gallery">
+    <div className="App">
       <header>
         <Header Page={{ page: page }} />
       </header>

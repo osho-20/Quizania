@@ -303,10 +303,3 @@ li.menu1:hover {
 .images a {
   text-decoration: none;
 }
-
-.Gallery {
-  text-align: center;
-  min-height: 100vh;
-  position: relative;
-  width: 100%;
-}
