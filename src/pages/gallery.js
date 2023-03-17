@@ -22,9 +22,9 @@ function Gallery() {
         <Header Page={{ page: page }} />
       </header>
       <section>
-        <Background />
+        {/* <Background /> */}
         <div >
-          <div className="gallery-heading">
+          <div id="gallery-heading">
             <p>My Coding Profiles</p>
           </div>
           <Slid Img={{ CC, CF, IB, LC }} />
