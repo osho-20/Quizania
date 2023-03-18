@@ -17,7 +17,7 @@ function Gallery() {
   const [page, setPage] = useState({
     value: 'GALLERY',
     interest1: 'space',
-    interest2: 'arts',
+    interest2: 'blockchain',
     interest3: 'sports',
     interest4: 'movies',
     interest5: 'stocks',
@@ -65,7 +65,7 @@ function Gallery() {
               <Slid2 I={{ ins: page.interest3 }} />
             </div>
             <div id="gallery-heading">
-              <p>Arts</p>
+              <p>Block Chain</p>
             </div>
             <div className="sl">
               <Slid2 I={{ ins: page.interest2 }} />
