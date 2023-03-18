@@ -1,16 +1,15 @@
-import React,{ useState} from "react";
+import React, { useState } from "react";
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 export default function SimpleSlider(props) {
-    
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         arrows: false,
         speed: 500,
-        lazyLode: true,
-        autoplay: false,
+        lazyLode: false,
+        autoplay: true,
         slidesToShow: 5,
         slidesToScroll: 1,
         initialSlide: 0,
@@ -19,12 +18,13 @@ export default function SimpleSlider(props) {
                 breakpoint: 1350,
                 settings: {
                     slidesToShow: 4,
-                    slidesToScroll: 3,
+                    slidesToScroll: 4,
                 }
             },
             {
                 breakpoint: 1050,
                 settings: {
+                    infinite: true,
                     slidesToShow: 3,
                     slidesToScroll: 3,
                 }
@@ -63,10 +63,6 @@ export default function SimpleSlider(props) {
             <div className="images">
                 <a href="https://leetcode.com/Osho_2020/" target="blank"><img className="programming" src={props.Img.LC} alt="logo" />
                     <h1>LeetCode</h1></a>
-            </div>
-            <div className="images">
-                <a href="https://leetcode.com/Osho_2020/" target="blank"><img className="programming" src={props.Img.CN} alt="logo" />
-                    <h1>Coding Ninja</h1></a>
             </div>
         </ Slider >
     );

@@ -269,7 +269,6 @@ li.menu1:hover {
   padding: 5px 5%;
   justify-content: center;
   align-items: center;
-  /* border-radius: 2em; */
   margin: auto;
   margin-left: 0px;
   margin-right: 0px;
@@ -282,6 +281,12 @@ li.menu1:hover {
   text-align: left;
   margin-top: 15px;
   margin-left: 15px;
+}
+
+.images {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
 }
 
 .images h1 {
@@ -314,4 +319,10 @@ li.menu1:hover {
   color: white;
   font-family: 'Comfortaa';
   font-size: 180%;
+}
+
+.programming:hover {
+  transform: scale(1.2);
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
 }
