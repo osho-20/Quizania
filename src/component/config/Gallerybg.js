@@ -3,12 +3,10 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 export default function Particle() {
     const particlesInit = useCallback(async engine => {
-        console.log(engine);
         await loadFull(engine);
     }, []);
 
     const particlesLoaded = useCallback(async container => {
-        await console.log(container);
     }, []);
     return (
         <div>
@@ -36,12 +34,9 @@ export default function Particle() {
                             resize: true,
                         },
                         modes: {
-                            slow: {
-                                quantity: 4,
-                            },
                             repulse: {
                                 distance: 200,
-                                duration: 0.4,
+                                duration: 400,
                             },
                         },
                     },
@@ -70,13 +65,13 @@ export default function Particle() {
                             value: 50,
                         },
                         opacity: {
-                            value: 0.99,
+                            value: 0.5,
                         },
                         shape: {
                             type: "circle",
                         },
                         size: {
-                            value: { min: 2, max: 5 },
+                            value: { min: 2, max: 2 },
                         },
                     },
                     detectRetina: true,

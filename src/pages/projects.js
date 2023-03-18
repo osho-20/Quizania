@@ -24,5 +24,4 @@ function Projects() {
     </div>
   );
 }
-
 export default Projects;

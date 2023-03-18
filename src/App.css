@@ -266,10 +266,10 @@ li.menu1:hover {
 .programming {
   width: 100%;
   height: 10em;
-  padding: 5px;
+  padding: 5px 5%;
   justify-content: center;
   align-items: center;
-  border-radius: 1em;
+  /* border-radius: 2em; */
   margin: auto;
   margin-left: 0px;
   margin-right: 0px;
@@ -278,7 +278,7 @@ li.menu1:hover {
 #gallery-heading {
   color: whitesmoke;
   font-family: 'Comfortaa';
-  font-size: 150%;
+  font-size: 100%;
   text-align: left;
   margin-top: 15px;
   margin-left: 15px;
@@ -291,4 +291,27 @@ li.menu1:hover {
 
 .images a {
   text-decoration: none;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: .8 !important;
+  color: white !important;
+  font-family: 'slick' !important;
+  font-size: 10px !important;
+}
+
+.slick-dots li button:before {
+  opacity: 0.5 !important;
+  color: whitesmoke !important;
+
+}
+
+.sl {
+  margin-bottom: 50px;
+}
+
+#main-heading h1 {
+  color: white;
+  font-family: 'Comfortaa';
+  font-size: 180%;
 }
