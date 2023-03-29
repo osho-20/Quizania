@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Quizania/static/css/main.48004393.css",
+    "main.js": "/Quizania/static/js/main.df063671.js",
+    "index.html": "/Quizania/index.html",
+    "main.48004393.css.map": "/Quizania/static/css/main.48004393.css.map",
+    "main.df063671.js.map": "/Quizania/static/js/main.df063671.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48004393.css",
+    "static/js/main.df063671.js"
+  ]
+}
