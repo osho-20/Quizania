@@ -1,25 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Header from './component/Header'
-import Footer from './component/Footer'
-import Content from './component/content'
-import Particles from './component/config/Homebg'
+import Header from './components/Header'
 export default function App() {
-  const [page, setPage] = useState({
-    value: 'PORTFOLIO',
-  })
   return (
     <div className="App">
-      <header>
-        <Header Page={{ page: page }} />
-      </header>
-      <div id="content-wrap" style={{ position: 'relative', zIndex: '0', width: '100%' }}>
-        <Particles />
-        <Content />
-      </div>
-      <footer className="footer">
-        <Footer />
-      </footer>
+      <Header />
     </div>
   );
 }
