@@ -19,11 +19,11 @@ const RegisterPage = (props) => {
         createUserWithEmailAndPassword(auth, email, pass)
             .then(async (resp) => {
                 console.log(auth.currentUser)
-
                 sendEmailVerification(auth.currentUser)
                     .then(() => {
                         console.log('sent');
                     })
+                    .catch((err) => { console.log(err) });
                 updateProfile(auth.currentUser, {
                     displayName: fullName,
                 });

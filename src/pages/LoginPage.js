@@ -9,6 +9,7 @@ const LoginPage = (props) => {
     const navg = useNavigate();
     const submit = (e) => {
         e.preventDefault();
+        console.log(email, pass);
         if (!email || !pass) {
             setError('**Please fill all fields**');
             return;
@@ -27,7 +28,7 @@ const LoginPage = (props) => {
                     navg('/');
                 }
             })
-            .catch((err) => { console.log("Error= ", err) });
+            .catch((err) => { alert("User Not Found.") });
     }
     return (
         <div className="login">
