@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Header = () => {
     return (
@@ -6,9 +6,8 @@ const Header = () => {
             <h1>Quizania</h1>
             <ul className="menu">
                 <li>About</li>
-                <li>Contact Us</li>
+                <li>Connect</li>
             </ul>
-
         </div>
     )
 }

@@ -8,6 +8,9 @@
   text-align: center;
   min-height: 100vh;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins';
 }
 
 body {
@@ -44,13 +47,150 @@ body {
 }
 
 .menu li:hover {
-  color: #FFCD38;
-  transition: ease-in-out 0.5s;
+  color: #f6ba03;
+  transition: ease-in-out 0.3s;
 }
 
-@media screen and (max-width:500px) and (min-width:0px) {
+.register,
+.login {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+.register-page,
+.login-page {
+  align-items: center;
+  justify-content: center;
+  border-radius: 2em;
+  width: 50%;
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 60px 0px;
+  flex-direction: column;
+  background-color: #541690;
+  border: 5px whitesmoke solid;
+}
+
+
+label {
+  text-align: left;
+  width: 12em;
+  padding: 0.4em;
+  color: white;
+}
+
+button {
+  margin: 10px;
+  border-radius: 0.3em;
+  background-color: #f6ba03;
+  width: 215px;
+  padding: 0.5em;
+  border: 2.5px black solid;
+}
+
+input {
+  border-radius: 0.5em;
+  padding: 0.5em;
+  border: 2.5px black solid;
+  font-size: 15px;
+}
+
+.heading {
+  font-family: 'Poppins';
+  font-size: 35px;
+  margin-top: 0px;
+  color: white;
+}
+
+.ProfileCreated {
+  align-items: center;
+  justify-content: center;
+  color: wheat;
+  margin: 20%;
+  text-decoration: none;
+}
+
+#a {
+  text-decoration: none;
+  color: Blue;
+}
+
+#profilephoto {
+  border-radius: 50%;
+  width: 3.5em;
+  height: 3.5em;
+}
+
+.Quiz {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.quiz-box {
+  background-color: white;
+  width: 40%;
+  margin: 20px;
+  background-color: #f6ba03;
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 230px;
+}
+
+.quiz-box h1,
+.quiz-box label {
+  font-size: 1.5em;
+  text-align: center;
+  width: 100%;
+}
+
+.name {
+  font-size: 1em;
+  margin: 0px;
+  color: white;
+}
+
+:disabled::placeholder {
+  color: black;
+}
+
+input:disabled {
+  color: black;
+}
+
+.slider {
+  margin: 20px;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.slider img {
+  width: 98%;
+  border-radius: 1em;
+  justify-content: space-between;
+}
+
+button:hover {
+  background-color: #FF4949;
+  color: white;
+  transition: ease-in-out 0.3s;
+}
+
+#user-page-button:hover {
+  background-color: #541690;
+  color: white;
+  transition: ease-in-out 0.3s;
+  border-color: #541690;
+}
+
+@media screen and (max-width:600px) and (min-width:0px) {
   .header h1 {
-    font-size: 33px;
+    font-size: 35px;
     padding-left: 0px;
   }
 
@@ -59,7 +199,50 @@ body {
   }
 
   .menu li {
-    font-size: 15px;
+    font-size: 22px;
     margin: 5px 0px;
+  }
+
+  .register-page,
+  .login-page {
+    width: 80%;
+  }
+
+  .quiz-box h1,
+  .quiz-box label {
+    font-size: 1.2em;
+  }
+
+  .quiz-box {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    border-radius: 0.5em;
+  }
+
+  .quiz-box label {
+    text-align: center;
+  }
+
+  #profilephoto {
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+  }
+
+  .name {
+    font-size: 0.7em;
+    margin: 0px;
+    color: white;
+  }
+
+  .quiz-box button,
+  .quiz-box input {
+    width: 80%;
+  }
+
+  .slider img {
+    border-radius: 0.5em;
   }
 }
