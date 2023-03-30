@@ -18,7 +18,7 @@ export default function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/Quizania' element={<Home />} />
           {
             user1 !== null ? <Route path={'/' + user1.uid} element={<User props={user1} />} /> : <Route path='/' element={<Home />} />
           }
