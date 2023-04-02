@@ -188,6 +188,78 @@ button:hover {
   border-color: #541690;
 }
 
+.profile-set {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-set #change-image {
+  border-radius: 50%;
+  width: 50%
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-quiz {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: black;
+  border-radius: 1em;
+  margin: 80px;
+  padding: 50px;
+}
+
+.Quiz-descrp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  background-color: black;
+}
+
+.create-quiz button {
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  margin: 0px;
+}
+
+#question-box {
+  background-color: grey;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 2em;
+}
+
+.question-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+#add-delete {
+  width: 200px;
+  margin: 20px 0px;
+
+}
+
+#add-del{
+  width:108px;
+}
+
 @media screen and (max-width:600px) and (min-width:0px) {
   .header h1 {
     font-size: 35px;

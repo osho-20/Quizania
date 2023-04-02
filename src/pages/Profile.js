@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
+import Photo from '../components/img/profile.jpeg'
+import { InputText } from 'primereact/inputtext'
 import { getAuth, sendEmailVerification, updateEmail } from 'firebase/auth'
 const Profile = (props) => {
     const user = props.props;
@@ -24,7 +26,7 @@ const Profile = (props) => {
         }
         setError('')
         if (edit === 1) {
-            console.log(auth.currentUser.email, email);
+            console.log(auth.currentUser, email);
             if (auth.currentUser.email !== email) {
                 updateEmail(auth.currentUser, email).then(() => {
                     console.log("email updated")
@@ -42,11 +44,11 @@ const Profile = (props) => {
             auth.updateCurrentUser(auth.currentUser, {
                 displayName: fullName,
                 phoneNumber: phone.toString(),
+                photoURL: Photo,
             }).then(() => {
                 alert('Successfully Updated');
-                // setEmail(email);
-                // setPhone(phone);
-                // setName(fullName);
+                setEmail(email);
+                setName(fullName);
                 return;
             }).catch((error) => {
                 console.log(error);
@@ -59,6 +61,16 @@ const Profile = (props) => {
             <Header />
             <div className="register">
                 <form onSubmit={submit} className="register-page">
+                    <img src={auth.currentUser.photoURL === null ? Photo : auth.currentUser.photoUR} />
+                    <InputText
+                        type='file'
+                        accept='/image/*'
+                        disabled={edit}
+                        onChange={(e) => {
+                            const file = e.target.files[0];
+                            console.log(file);
+                        }}
+                    />
                     <p className='heading'>Profile</p>
                     <label>Full Name</label>
                     <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" disabled={edit} />

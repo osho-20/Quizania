@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/HeaderProfile'
-import { getAuth } from 'firebase/auth'
+import Quiz from '../components/Quiz'
 const CreateQuiz = (props) => {
+    const [KEY,setKEY]=useState();
     return (
         <div>
             <Header p={props} />
+            <div className='create'>
+                <form className="create-quiz">
+                    <Quiz />
+                </form>
+            </div>
         </div>
     )
 }
