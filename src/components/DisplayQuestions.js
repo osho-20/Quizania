@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 
 const DisplayQuestions = (props) => {
+    console.log('props= ',props);
     const [quest, setQuestion] = useState(props.q.questions);
-    console.log(quest);
+    if (quest.length > 0 && quest[Number(0)].id === undefined) {
+        quest.shift();
+        setQuestion(quest);
+    }
     return (
         <div>
             {
                 quest?.map((question) => {
                     return (
                         <div id="question-box">
-                            <p style={{ color: 'white', textAlign: 'left', margin: '20px' }}>{question?.id}.) {question?.description} ({question?.marks} marks)</p>
+                            <p style={{ color: 'white', textAlign: 'left', margin: '20px' }}>{question?.id}. {question?.description} ({question?.marks} marks)</p>
                             {
                                 question?.options?.map((opt) => {
                                     return (

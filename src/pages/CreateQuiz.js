@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Header from '../components/HeaderProfile'
 import Quiz from '../components/Quiz'
 const CreateQuiz = (props) => {
-    const [KEY,setKEY]=useState();
     return (
         <div>
             <Header p={props} />

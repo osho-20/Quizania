@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase'
+import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -31,20 +32,32 @@ const LoginPage = (props) => {
             .catch((err) => { alert("User Not Found.") });
     }
     return (
-        <div className="login">
-            <form onSubmit={submit} className="login-page">
-                <p className='heading'>Login</p>
-                <label htmlFor="Email">Email</label>
-                <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder='xyz@gmail.com' name="email" />
-                <label htmlFor="Password">Password</label>
-                <input value={pass} onChange={(event) => setPass(event.target.value)} type="password" placeholder='******' name="password" />
-                <button type="submit">Login</button>
-                {
-                    (error === '') ? <p></p> : <p style={{ color: 'rgb(253 4 6)' }}>{error}</p>
-                }
-                <p style={{ marginBottom: '2px', color: 'white' }}>Don't have an account?</p>
-                <button onClick={() => props.onFormSwitch('register')}>Register</button>
-            </form >
+        <div id="outer-login-box" >
+            <div className="login">
+                <div>
+                    <img src={cover} id="cover" />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <form onSubmit={submit} className="login-page">
+                        <p className='heading'>LOGIN</p>
+                        <div>
+                            <label htmlFor="Email" id="login-input">Email</label>
+                            <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder='xyz@gmail.com' name="email" />
+                        </div>
+                        <div>
+                            <label htmlFor="Password" id="login-input">Password</label>
+                            <input value={pass} onChange={(event) => setPass(event.target.value)} type="password" placeholder='******' name="password" />
+                        </div>
+                        <div>
+                            <button type="submit" id="login-button">Login</button>
+                        </div>
+                        <div>
+                            <p style={{ marginBottom: '2px', color: 'white' }}>Don't have an account?</p>
+                            <button onClick={() => props.onFormSwitch('register')} id="login-button">Register</button>
+                        </div>
+                    </form >
+                </div>
+            </div>
         </div>
     )
 }

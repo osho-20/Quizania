@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Quiz from '../components/img/quizInterface1.jpeg'
-export default function SimpleSlider() {
+import { getAuth } from 'firebase/auth'
+import { getDatabase, ref, onValue } from 'firebase/database'
+import { firestore } from '../firebase'
+import { doc, getDoc } from 'firebase/firestore'
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Link } from "react-router-dom";
+export default function SimpleSlider(props) {
+    const auth = getAuth();
+    const db = getDatabase();
+    const [quizs, steQuizs] = useState({ details: [] });
+    const get = async () => {
+        const docref = doc(firestore, 'creaters', auth.currentUser.uid);
+        const document = await getDoc(docref);
+        if (document.exists()) {
+            const key = document.data().quizs;
+            key?.map((k) => {
+                const refer = ref(db, 'Quiz/' + k);
+                onValue(refer, (snap) => {
+                    const data = snap.val();
+                    const Name = data.QuizName;
+                    const code = data.Quizid;
+                    let arr = quizs.details;
+                    arr.push({ k, Name, code });
+                    steQuizs({ ...quizs, details: arr });
+                })
+            })
+        }
+    }
+    const [name, setName] = useState('');
+    const [keys, setKeys] = useState([]);
+    const [code, setCode] = useState('');
+    useEffect(() => {
+        get();
+    }, []);
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 1500,
         arrows: false,
         autoplay: true,
@@ -47,31 +80,29 @@ export default function SimpleSlider() {
         ]
     };
     return (
-        <Slider {...settings}>
-            <div>
-                <img src={Quiz} />
-                <h3>1</h3>
-            </div>
-            <div>
-                <img src={Quiz} />
-                <h3>2</h3>
-            </div>
-            <div>
-                <img src={Quiz} />
-                <h3>3</h3>
-            </div>
-            <div>
-                <img src={Quiz} />
-                <h3>4</h3>
-            </div>
-            <div>
-                <img src={Quiz} />
-                <h3>5</h3>
-            </div>
-            <div>
-                <img src={Quiz} />
-                <h3>6</h3>
-            </div>
-        </Slider>
+        <div>
+            <h1 style={{ color: 'white', fontFamily: 'poppins', fontWeight: '500' }}>My Quizs</h1>
+            <Slider {...settings}>
+                {
+                    quizs?.details?.map((key) => {
+
+                        return (
+                            <div>
+                                <img src={Quiz} style={{ padding: '20px' }} />
+                                <p style={{ color: 'white', fontFamily: 'Poppins', margin: '20px' }}>Quiz Name = {key.Name}</p>
+                                <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                    <CopyToClipboard text={key.code} style={{ width: '100px' }}>
+                                        <button >Copy Code</button>
+                                    </CopyToClipboard>
+                                    <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'}><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit Quiz</button></Link>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </Slider>
+        </div >
+
+
     );
 }

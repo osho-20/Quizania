@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { sendEmailVerification } from 'firebase/auth'
 import { auth, firestore } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
+import cover from '../components/img/loginpage.png'
 const RegisterPage = (props) => {
     const [email, setEmail] = useState('');
     const [fullName, setName] = useState('');
@@ -40,22 +41,35 @@ const RegisterPage = (props) => {
             .catch((err) => { console.log("Error= ", err); return; });
     }
     return (
-        <div className="register">
-            <form onSubmit={submit} className="register-page">
-                <p className='heading'>Register</p>
-                <label>Full Name</label>
-                <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" />
-                <label>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="xyz@gmial.com" />
-                <label>Password</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="******" />
-                {
-                    error !== '' ? <p>{error}</p> : <p></p>
-                }
-                <button type="submit">Register</button>
-                <p style={{ marginBottom: '2px', color: 'white' }}>Already have an account?</p>
-                <button onClick={() => props.onFormSwitch('login')}>Login</button>
-            </form>
+        <div id="outer-login-box">
+            <div className="register">
+                <div>
+                    <img src={cover} id="cover" />
+                </div>
+                <form onSubmit={submit} className="register-page">
+                    <p className='heading'>Register</p>
+                    <div>
+                        <label id="login-input">Full Name</label>
+                        <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" />
+                    </div>
+                    <div>
+                        <label id="login-input">Email</label>
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="xyz@gmial.com" />
+                    </div>
+                    <div>
+                        <label id="login-input">Password</label>
+                        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="******" />
+                    </div>
+                    {
+                        error !== '' ? <p>{error}</p> : <p></p>
+                    }
+                    <div>
+                        <button type="submit" id="login-button">Register</button>
+                        <p style={{ marginBottom: '2px', color: 'white' }}>Already have an account?</p>
+                        <button onClick={() => props.onFormSwitch('login')} id="login-button">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
