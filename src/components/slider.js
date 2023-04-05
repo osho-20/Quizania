@@ -81,7 +81,7 @@ export default function SimpleSlider(props) {
     };
     return (
         <div>
-            <h1 style={{ color: 'white', fontFamily: 'poppins', fontWeight: '500' }}>My Quizs</h1>
+            <h1 >My Quizs</h1>
             <Slider {...settings}>
                 {
                     quizs?.details?.map((key) => {
@@ -89,10 +89,10 @@ export default function SimpleSlider(props) {
                         return (
                             <div>
                                 <img src={Quiz} style={{ padding: '20px' }} />
-                                <p style={{ color: 'white', fontFamily: 'Poppins', margin: '20px' }}>Quiz Name = {key.Name}</p>
+                                <p style={{ color: 'white', fontFamily: 'Poppins', margin: '0px' }}>Quiz Name = {key.Name}</p>
                                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                     <CopyToClipboard text={key.code} style={{ width: '100px' }}>
-                                        <button >Copy Code</button>
+                                        <button >Code</button>
                                     </CopyToClipboard>
                                     <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'}><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit Quiz</button></Link>
                                 </div>

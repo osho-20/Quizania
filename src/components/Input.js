@@ -15,8 +15,7 @@ export default function Input({ objValue, index }) {
     }
     return (
         <div className="input">
-            <input type="checkbox" id={index} onClick={click} />
-            <label htmlFor={label}>{label}</label>
+            <label htmlFor={label}><input className="input-box" type="checkbox" id={index} onClick={click} />{label}</label>
         </div>
     );
 }

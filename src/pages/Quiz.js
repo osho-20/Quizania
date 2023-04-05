@@ -69,10 +69,10 @@ const Quiz = (props) => {
     }
     console.log('general ', gen);
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {
                 start === 0 ?
-                    <div style={{ backgroundColor: 'white', width: '60%', margin: '40px', padding: '20px', borderRadius: '2em' }}>
+                    <div id="instructions">
                         <h1>Instructions</h1>
                         <p>{gen?.qd}</p>
                         <ul style={{ textAlign: 'left' }}>
@@ -87,43 +87,50 @@ const Quiz = (props) => {
                             <li>The timer will help you in checking the remaining time.</li>
                             <li>The End button will appear on the last page, clicking it will submit the quiz.</li>
                         </ul>
-                        <button onClick={startquiz}>Start</button>
+                        <button id="start" onClick={startquiz}>Start</button>
                     </div>
-                    : <div>
+                    : <div className='quiz1-box'>
                         {
                             data?.QuizQuestion?.map((get, index) => {
                                 return (
                                     <div>
                                         {
-                                            index === id ? < div key={index} >
-                                                <p>{index + 1}. {get.description}</p>
-                                                {
-                                                    get?.options.map((val, index) => {
-                                                        return (
-                                                            <Input
-                                                                key={index}
-                                                                objValue={{ label: val, option: opt, value: setOpt }}
-                                                                index={index}
-                                                            />
-                                                        )
-                                                    })
-                                                }
-                                                <button onClick={submit}>Submit Answer</button>
-                                            </div> : <div style={{ height: '0px', width: '0px' }}></div>
+                                            index === id ?
+                                                < div key={index} className="quiz-display">
+                                                    <div id="quiz-display2" style={{ height: '100%', margin: '20px 20px', marginBottom: '150px' }}>
+                                                        <p style={{ color: 'white', textAlign: 'left', fontSize: '30px' }}>{index + 1}. {get.description}</p>
+                                                        {
+                                                            get?.options.map((val, index) => {
+                                                                return (
+                                                                    <Input
+                                                                        key={index}
+                                                                        objValue={{ label: val, option: opt, value: setOpt }}
+                                                                        index={index}
+                                                                    />
+                                                                )
+                                                            })
+                                                        }
+                                                    </div>
+                                                    <button id="quiz-submit-button" onClick={submit}>Submit Answer</button>
+                                                </div> : <div style={{ height: '0px', width: '0px' }}></div>
                                         }
                                     </div>
                                 )
                             })
                         }
                         {
-                            id === data?.QuizQuestion?.length ? <div>
-                                Score= {score}
+                            id === data?.QuizQuestion?.length ? <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+                                <h1>Result</h1>
+                                <div id="score-board">Score= {score}</div>
+                                <div id="score-board">Incorrect answer= {score}</div>
+                                <div id="score-board">Correct answer= {score}</div>
+                                <div id="score-board">Partial-Correct answer= {score}</div>
                             </div>
                                 : <p></p>
                         }
                     </div >
             }
-        </div>
+        </div >
     )
 }
 

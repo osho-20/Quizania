@@ -48,7 +48,7 @@ const AddQuestion = (props) => {
                 return;
             }
             else {
-                setError('Please enter a valid option number');
+                setError('**Please enter a valid option number**');
                 return;
             }
         }
@@ -65,7 +65,7 @@ const AddQuestion = (props) => {
     const Addquest = async (e) => {
         e.preventDefault();
         if (!QuestionDes || opt.currentoption.length === 0 || opt.answer.length === 0 || !marks || Number(marks) === NaN || Number(marks) < 0) {
-            setError("Please fill the correct details i.e; Description Must not be empty, Options must not be empty, Answer must not be empty and correct option must be inserted as answer, marks cannot be negative.");
+            setError("**Please fill the correct details i.e; Description Must not be empty, Options must not be empty, Answer must not be empty and correct option must be inserted as answer, marks cannot be negative.**");
             return;
         }
         if (count <= 0) {
@@ -76,7 +76,7 @@ const AddQuestion = (props) => {
             setEdit(0);
         }
         if (count > Number(quiz.general_instructions.quizNoOfQuest)) {
-            setError('You have reached max number of questions,cannot add new question.');
+            setError('**You have reached max number of questions,cannot add new question.**');
             setQuestionDes('');
             setOpt({ currentoption: [], answer: [] });
             setMarks('');
@@ -144,7 +144,7 @@ const AddQuestion = (props) => {
         e.preventDefault();
         console.log(score, Number(quiz.general_instructions.quizScore));
         if (score !== Number(quiz.general_instructions.quizScore)) {
-            setError('Please check your marking scheme it doesn\'t match with the total score.');
+            setError('**Please check your marking scheme it doesn\'t match with the total score.**');
             return;
         }
         const db = getDatabase();
@@ -163,25 +163,37 @@ const AddQuestion = (props) => {
     }
     return (
         <div className="Quiz-descrp">
-            <label>Question</label>
-            <textarea type="text" rows="5" value={QuestionDes} onChange={Adddescp} disabled={edit}></textarea>
+            <div style={{ textAlign: 'left', margin: '10px' }}>
+                <label id="create-quiz-label">Question</label>
+                <textarea type="text" rows="5" id="create-quiz-textarea" value={QuestionDes} onChange={Adddescp} disabled={edit}></textarea>
+            </div>
             <span className="question-button">
                 {
-                    edit === 0 ? <button onClick={AddDesc} id="add-delete">Add Descrp</button> : <button onClick={EditDesc} id="add-delete">Edit Descrp</button>
+                    edit === 0 ? <button onClick={AddDesc} id="add-del">Add</button> : <button onClick={EditDesc} id="add-del">Edit</button>
                 }
             </span>
-            <label>Options</label>
-            <div style={{ alignItems: 'left', justifyContent: 'left', textAlign: 'left', width: '100%' }}>
-                <input type="text" style={{ width: '100%' }} value={curropt} onChange={(e) => setCurrentOpt(e.target.value)}></input><button onClick={Addopt} id="add-del">Add</button><button onClick={Deleteopt} id="add-del">Delete</button>
+            <div style={{ textAlign: 'left', margin: '10px' }}>
+                <label id="create-quiz-label">Options</label>
+                <input type="text" id="create-quiz-input" style={{ width: '100%' }} value={curropt} onChange={(e) => setCurrentOpt(e.target.value)}></input>
+                <span className="question-button">
+                    <button onClick={Addopt} id="add-del">Add</button>
+                    <button onClick={Deleteopt} id="add-del">Delete</button>
+                </span>
             </div>
-            <label>Answer</label>
-            <div style={{ alignItems: 'left', justifyContent: 'left', textAlign: 'left', width: '100%' }}>
-                <input type="text" value={Ans} style={{ width: '100%' }} onChange={(e) => setAns(Number(e.target.value))} placeholder="Please write the option number."></input><button onClick={AddAns} id="add-del">Add</button><button onClick={DeleteAns} id="add-del">Delete</button>
+            <div style={{ textAlign: 'left', margin: '10px' }}>
+                <label id="create-quiz-label">Answer</label>
+                <input type="text" id="create-quiz-input" value={Ans} style={{ width: '100%' }} onChange={(e) => setAns(Number(e.target.value))} placeholder="Please write the option number."></input>
+                <span className="question-button">
+                    <button onClick={AddAns} id="add-del">Add</button>
+                    <button onClick={DeleteAns} id="add-del">Delete</button>
+                </span>
             </div>
-            <label>Marks</label>
-            <input type="numeric" value={marks} onChange={(e) => setMarks(Number(e.target.value))} placeholder="Pleas enter the marks."></input>
+            <div style={{ textAlign: 'left', margin: '10px' }}>
+                <label id="create-quiz-label">Marks</label>
+                <input type="numeric" id="create-quiz-input" value={marks} onChange={(e) => setMarks(Number(e.target.value))} placeholder="Pleas enter the marks."></input>
+            </div>
             {
-                err !== '' ? <p style={{ color: 'white' }}>{err}</p> : <p></p>
+                err !== '' ? <p style={{ color: 'red' }}>{err}</p> : <p></p>
             }
             <span className="question-button">
                 <button onClick={Addquest} id="add-delete">Add Questions</button>
@@ -190,7 +202,7 @@ const AddQuestion = (props) => {
             {
                 quiz.questions.length === Number(quiz.general_instructions.quizNoOfQuest) ?
                     <span className="question-button">
-                        <button type="submit" onClick={submit}>Submit</button>
+                        <button type="submit" id="add-del" onClick={submit}>Submit</button>
                     </span> : <p></p>
             }
             <DisplayQuestions q={quiz} />
