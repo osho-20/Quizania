@@ -34,7 +34,7 @@ export default function App() {
   }
   return (
     <div className="App">
-      <Router basename='/Quizania'>
+      <Router basename=''>
         <Routes>
           <Route path='/Quizania' element={<Home />} />
           {
