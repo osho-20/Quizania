@@ -46,9 +46,9 @@ const HeaderProfile = (props) => {
                 <ul className={menu} style={{ position: 'relative', zIndex: '1' }} >
                     <li className="menu1" style={{ fontSize: '25px', paddingBottom: '35px' }}>Welcome</li>
                     <li className="menu-profile" ><img src={Profile} alt={Profile} id="profilephoto" /><span class="caption">{user.displayName.toUpperCase()}</span></li>
-                    <li className="menu1" id="hover-underline-animation" >Profile</li>
-                    <li className="menu1" id="hover-underline-animation">Progress</li>
-                    <li className="menu1" id="hover-underline-animation">Report Issue</li>
+                    <li className="menu1" id="hover-underline-animation" ><Link to={'/profile=' + user.uid} className="link-css" >Profile</Link></li>
+                    <li className="menu1" id="hover-underline-animation"><Link to={'/profile=' + user.uid} className="link-css" >Progress</Link></li>
+                    <li className="menu1" id="hover-underline-animation"><Link to={'/profile=' + user.uid} className="link-css" >Report Issue</Link></li>
                     <li className="menu1" ><button id="signout">Log Out</button></li>
                 </ul>
             </div>

@@ -92,6 +92,36 @@ body {
   transform-origin: center;
 }
 
+/*-------------------------*/
+#profilephoto {
+  --g: 4px;
+  --b: 2px;
+  --c: #01ACB5;
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg, var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg, var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0, var(--_g2) 0 var(--_p, 125%),
+    var(--_g1) var(--_p, 125%) 100%, var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b), var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+  width: 4em;
+  height: 4em;
+}
+
+#profilephoto:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/*-------------------------*/
+
+
 /*-------*/
 .menu1 {
   background-color: #232830;
@@ -199,7 +229,11 @@ body {
   margin-right: 10px;
 }
 
-
+.link-css {
+  text-decoration: none;
+  color: wheat;
+  font-size: 20px;
+}
 
 .header h1 {
   margin: 0;
@@ -342,21 +376,7 @@ input {
   color: Blue;
 }
 
-#profilephoto {
-  border-radius: 50%;
-  width: 3.5em;
-  height: 3.5em;
-  margin: 5px 0px;
-  background-color: #232830;
-}
 
-#profilephoto:hover {
-  border-radius: 50%;
-  width: 4em;
-  height: 4em;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
 
 .caption {
   margin-bottom: 30px;
@@ -853,7 +873,6 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   #profilephoto {
-    border-radius: 50%;
     width: 3em;
     height: 3em;
   }
