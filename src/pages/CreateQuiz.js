@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Header from '../components/HeaderProfile'
 import Quiz from '../components/Quiz'
-const CreateQuiz = (props) => {
+const CreateQuiz = (prop) => {
+    const props = prop.props;
     return (
         <div>
             <Header p={props} />
