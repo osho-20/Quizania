@@ -32,7 +32,7 @@ const HeaderProfile = (props) => {
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <div className="toggle">
                             <div className="burger">
-                                <div onClick={updateMenu} style={{ width: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                                <div onClick={updateMenu} style={{ width: '45px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
                                     <span className={bar} ></span>
                                     <span className={bar} ></span>
                                     <span className={bar} ></span>

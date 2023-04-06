@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { getDatabase, ref, onValue } from 'firebase/database';
 import Input from '../components/Input';
+import PieChart from '../components/PieChart';
 const Quiz = (props) => {
     const db = getDatabase();
     const [data, setData] = useState({});
     const [id, setId] = useState(0);
     const [opt, setOpt] = useState({});
-    const [fopt, setFopt] = useState({});
+    const [incorrect, setIncorrect] = useState(0);
+    const [partial, setPartial] = useState(0);
+    const [correct, setCorrect] = useState(0);
+    const [unattampted, setUnattampted] = useState(0);
     const [score, setScore] = useState(0);
     const [start, setStart] = useState(0);
     const [gen, setGen] = useState({});
+    const [pie, setPie] = ({});
+    const [res, setRes] = (0);
     useEffect(() => {
         const doc = ref(db, 'Questions/' + props.p[1]);
 
@@ -45,7 +51,6 @@ const Quiz = (props) => {
         for (const options of keys) {
             let check = false;
             ans.find((answer) => { check = (answer === Number(options) + 1) });
-            // console.log(options, check);
             if (opt[options] === 1 && check) {
                 count = count + 1;
             }
@@ -54,11 +59,28 @@ const Quiz = (props) => {
                 break;
             }
         }
-        if (count !== -1) {
+        if (count > 0) {
             let marksperoption = ans.length;
+            if (count !== marksperoption) {
+                setPartial(partial + 1);
+            }
+            else {
+                setCorrect(correct + 1);
+            }
             marksperoption = (data.QuizQuestion[id].marks / marksperoption) * count;
+
             console.log(count, marksperoption)
             setScore(score + marksperoption);
+        }
+        else if (count === 0) {
+            setUnattampted(unattampted + 1);
+        }
+        else {
+            setIncorrect(incorrect + 1);
+        }
+        if (id === data?.QuizQuestion?.length) {
+            setRes(1);
+            setPie({ incorrect, correct, unattampted, partial });
         }
         setId(id + 1);
         setOpt({});
@@ -111,7 +133,9 @@ const Quiz = (props) => {
                                                             })
                                                         }
                                                     </div>
-                                                    <button id="quiz-submit-button" onClick={submit}>Submit Answer</button>
+                                                    {
+                                                        id === data?.QuizQuestion?.length ? <button id="quiz-submit-button" onClick={submit}>Submit Answer</button> : <button id="quiz-submit-button" onClick={submit}>Submit and End</button>
+                                                    }
                                                 </div> : <div style={{ height: '0px', width: '0px' }}></div>
                                         }
                                     </div>
@@ -119,14 +143,20 @@ const Quiz = (props) => {
                             })
                         }
                         {
-                            id === data?.QuizQuestion?.length ? <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+                            res === 1 ? <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                                 <h1>Result</h1>
-                                <div id="score-board">Score= {score}</div>
-                                <div id="score-board">Incorrect answer= {score}</div>
-                                <div id="score-board">Correct answer= {score}</div>
-                                <div id="score-board">Partial-Correct answer= {score}</div>
+                                <div>
+                                    <PieChart p={pie} />
+                                    <div id="score-board">
+                                        <div id="score-board">Score= {score}</div>
+                                        <div id="score-board">Incorrect answer= {incorrect}</div>
+                                        <div id="score-board">Correct answer= {correct}</div>
+                                        <div id="score-board">Partial-Correct answer= {partial}</div>
+                                        <div id="score-board">Unattampted answer= {unattampted}</div>
+                                    </div>
+                                </div>
                             </div>
-                                : <p></p>
+                                : <div></div>
                         }
                     </div >
             }

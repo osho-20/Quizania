@@ -238,71 +238,102 @@ const EditQuiz = (props) => {
     }
     // console.log('count= ', score);
     return (
-        <div>
+        <div >
             <Header p={props.p[0]} />
-            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}>
-                {
-                    dis === -1 ? <button onClick={StartEditing}>Start Editing</button> :
-                        <div className="Quiz-descrp">
-                            <h1 style={{ color: 'white' }}>Edit Quiz</h1>
-                            <label>Name for the Quiz</label>
-                            <input type='text' value={quizName} onChange={(e) => setQuizName(e.target.value)} placeholder="Please enter the Title" disabled={dis}></input>
-                            <label>Description</label>
-                            <textarea type='text' rows="5" value={quizDescrp} onChange={(e) => setQuizDescrp(e.target.value)} placeholder="Please enter the description" disabled={dis}></textarea>
-                            <label>Created By</label>
-                            <input type='text' value={quizCreater} onChange={(e) => setQuizCreater(e.target.value)} placeholder="Creater's Name" disabled={dis}></input>
-                            <label>Number of Questions</label>
-                            <input type='numeric' value={quizNoOfQuest} onChange={(e) => setQuizNoOfQuest(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
-                            <label>Total score</label>
-                            <input type='numeric' value={quizScore} onChange={(e) => setQuizScore(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
-                            <label>Start Time</label>
-                            <input type='datetime-local' value={start} onChange={(e) => setStart(e.target.value)} disabled={dis}></input>
-                            <label>End Time</label>
-                            <input type='datetime-local' value={end} onChange={(e) => setEnd(e.target.value)} disabled={dis}></input>
-                            <label>Duration Time</label>
-                            <input type='time' value={duration} onChange={(e) => setDuration(e.target.value)} disabled={dis}></input>
-                            {
-                                err !== '' ? <p style={{ color: 'white' }}>{err}</p> : <p></p>
-                            }
-                            <span className="question-button">
+            <div className='create'>
+                <form className="create-quiz">
+                    {
+                        dis === -1 ? <div>
+                            <p style={{ margin: '20px', color: 'white' }}>
+                                Please make sure don't reload or exit without saving and submitting the changes .
+                            </p>
+                            <button onClick={StartEditing}>Start Editing</button></div> :
+                            <div className="Quiz-descrp">
+                                <h1 style={{ color: 'white' }}>Edit Quiz</h1>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Name for the Quiz</label>
+                                    <input type='text' id="create-quiz-input" value={quizName} onChange={(e) => setQuizName(e.target.value)} placeholder="Please enter the Title" disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Description</label>
+                                    <textarea type='text' id="create-quiz-textarea" rows="5" value={quizDescrp} onChange={(e) => setQuizDescrp(e.target.value)} placeholder="Please enter the description" disabled={dis}></textarea>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Created By</label>
+                                    <input type='text' id="create-quiz-input" value={quizCreater} onChange={(e) => setQuizCreater(e.target.value)} placeholder="Creater's Name" disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Number of Questions</label>
+                                    <input type='numeric' id="create-quiz-input" value={quizNoOfQuest} onChange={(e) => setQuizNoOfQuest(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Total score</label>
+                                    <input type='numeric' id="create-quiz-input" value={quizScore} onChange={(e) => setQuizScore(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Start Time</label>
+                                    <input type='datetime-local' id="create-quiz-input" value={start} onChange={(e) => setStart(e.target.value)} disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">End Time</label>
+                                    <input type='datetime-local' id="create-quiz-input" value={end} onChange={(e) => setEnd(e.target.value)} disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Duration Time</label>
+                                    <input type='time' id="create-quiz-input" value={duration} onChange={(e) => setDuration(e.target.value)} disabled={dis}></input>
+                                </div>
                                 {
-                                    dis === 1 ? <button onClick={StartEditing} >Edit Quiz</button> : <button onClick={Save} >Save Quiz</button>
+                                    err !== '' ? <p style={{ color: 'white' }}>{err}</p> : <p></p>
                                 }
+                                <span className="question-button">
+                                    {
+                                        dis === 1 ? <button onClick={StartEditing} >Edit Quiz</button> : <button onClick={Save} >Save Quiz</button>
+                                    }
 
-                            </span>
-                            <label>Question</label>
-                            <textarea type="text" rows="5" value={QuestionDes} onChange={Adddescp} disabled={edit}></textarea>
-                            <span className="question-button">
+                                </span>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Question</label>
+                                    <textarea type="text" id="create-quiz-input" rows="5" value={QuestionDes} onChange={Adddescp} disabled={edit}></textarea>
+                                </div>
+                                <span className="question-button">
+                                    {
+                                        edit === 0 ? <button onClick={AddDesc} id="add-delete">Add Descrp</button> : <button onClick={EditDesc} id="add-delete">Edit Descrp</button>
+                                    }
+                                </span>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Options</label>
+                                    <div style={{ alignItems: 'left', justifyContent: 'left', textAlign: 'left', width: '100%' }}>
+                                        <input type="text" id="create-quiz-input" style={{ width: '100%' }} value={curropt} onChange={(e) => setCurrentOpt(e.target.value)}></input><button onClick={Addopt} id="add-del">Add</button><button onClick={Deleteopt} id="add-del">Delete</button>
+                                    </div>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Answer</label>
+                                    <div style={{ alignItems: 'left', justifyContent: 'left', textAlign: 'left', width: '100%' }}>
+                                        <input type="text" id="create-quiz-input" value={Ans} style={{ width: '100%' }} onChange={(e) => setAns(Number(e.target.value))} placeholder="Please write the option number."></input><button onClick={AddAns} id="add-del">Add</button><button onClick={DeleteAns} id="add-del">Delete</button>
+                                    </div>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Marks</label>
+                                    <input type="numeric" id="create-quiz-input" value={marks} onChange={(e) => setMarks(Number(e.target.value))} placeholder="Pleas enter the marks."></input>
+                                </div>
                                 {
-                                    edit === 0 ? <button onClick={AddDesc} id="add-delete">Add Descrp</button> : <button onClick={EditDesc} id="add-delete">Edit Descrp</button>
+                                    err !== '' ? <p style={{ color: 'white' }}>{err}</p> : <p></p>
                                 }
-                            </span>
-                            <label>Options</label>
-                            <div style={{ alignItems: 'left', justifyContent: 'left', textAlign: 'left', width: '100%' }}>
-                                <input type="text" style={{ width: '100%' }} value={curropt} onChange={(e) => setCurrentOpt(e.target.value)}></input><button onClick={Addopt} id="add-del">Add</button><button onClick={Deleteopt} id="add-del">Delete</button>
+                                <span className="question-button">
+                                    <button onClick={Addquest} id="add-delete">Add Questions</button>
+                                    <button onClick={Deletequest} id="add-delete">Delete Questions</button>
+                                </span>
+                                {
+                                    quiz.questions.length === Number(quiz.general_instructions.TotalQuestions) ?
+                                        <span className="question-button">
+                                            <button type="submit" onClick={submit}>Submit</button>
+                                        </span> : <p></p>
+                                }
+                                <DisplayQuestions q={quiz} />
                             </div>
-                            <label>Answer</label>
-                            <div style={{ alignItems: 'left', justifyContent: 'left', textAlign: 'left', width: '100%' }}>
-                                <input type="text" value={Ans} style={{ width: '100%' }} onChange={(e) => setAns(Number(e.target.value))} placeholder="Please write the option number."></input><button onClick={AddAns} id="add-del">Add</button><button onClick={DeleteAns} id="add-del">Delete</button>
-                            </div>
-                            <label>Marks</label>
-                            <input type="numeric" value={marks} onChange={(e) => setMarks(Number(e.target.value))} placeholder="Pleas enter the marks."></input>
-                            {
-                                err !== '' ? <p style={{ color: 'white' }}>{err}</p> : <p></p>
-                            }
-                            <span className="question-button">
-                                <button onClick={Addquest} id="add-delete">Add Questions</button>
-                                <button onClick={Deletequest} id="add-delete">Delete Questions</button>
-                            </span>
-                            {
-                                quiz.questions.length === Number(quiz.general_instructions.TotalQuestions) ?
-                                    <span className="question-button">
-                                        <button type="submit" onClick={submit}>Submit</button>
-                                    </span> : <p></p>
-                            }
-                            <DisplayQuestions q={quiz} />
-                        </div>
-                }
+                    }
+
+                </form>
             </div>
         </div>
     )

@@ -16,14 +16,6 @@ const RegisterPage = (props) => {
                 console.log('sent');
             })
             .catch((err) => { console.log(err) });
-        await updateProfile(auth.currentUser, {
-            displayName: fullName,
-        }).then(() => { console.log('updated') });
-        await setDoc(doc(firestore, 'creaters', auth.currentUser.uid), {
-            name: auth.currentUser.displayName,
-            email: auth.currentUser.email,
-        })
-        window.location.reload(false);
     }
     const submit = (e) => {
         e.preventDefault();
@@ -35,6 +27,14 @@ const RegisterPage = (props) => {
         createUserWithEmailAndPassword(auth, email, pass)
             .then(async (resp) => {
                 alert('Kindly verify your email and try to login again.');
+                await updateProfile(auth.currentUser, {
+                    displayName: fullName,
+                }).then(() => { console.log('updated') });
+                await setDoc(doc(firestore, 'creaters', auth.currentUser.uid), {
+                    name: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
+                })
+                // window.location.reload(false);
                 create();
                 return;
             })

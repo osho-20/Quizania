@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const DisplayQuestions = (props) => {
-    console.log('props= ', props);
     const [quest, setQuestion] = useState(props.q.questions);
     if (quest.length > 0 && quest[Number(0)].id === undefined) {
         quest.shift();

@@ -79,9 +79,10 @@ export default function SimpleSlider(props) {
             }
         ]
     };
+    
     return (
         <div>
-            <h1 >My Quizs</h1>
+            <h1 >My Quiz</h1>
             <Slider {...settings}>
                 {
                     quizs?.details?.map((key) => {

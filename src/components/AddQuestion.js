@@ -156,6 +156,7 @@ const AddQuestion = (props) => {
         alert('Quiz Created');
         await update(ref(db, 'Questions/' + quiz.general_instructions.id), {
             QuizQuestion,
+            key,
         }).then((res) => {
         }).catch((err) => { console.log(err) });
         alert('Quiz Created');

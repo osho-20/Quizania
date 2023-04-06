@@ -9,6 +9,7 @@ import Create from './pages/CreateQuiz'
 import Quiz from './pages/Quiz'
 import EditQuiz from './pages/EditQuiz';
 import { getDoc, doc } from 'firebase/firestore'
+import Chart from './components/PieChart';
 export default function App() {
   const [user1, setUser] = useState('');
   const [keys, setKeys] = useState({ val: [] });
@@ -34,8 +35,8 @@ export default function App() {
   }
   return (
     <div className="App">
-      <Router basename='/Quizania'>
-        <Routes>
+      <Router basename='/osho'>
+        <Routes >
           <Route path='/Quizania' element={<Home />} />
           {
             user1 !== null ? <Route path={'/' + user1.uid} element={<User props={[user1, setC, setCode]} />} /> : <Route path='/' element={<Home />} />
@@ -51,6 +52,9 @@ export default function App() {
           }
           {
             user1 !== null ? <Route path={"/play=" + user1.uid} element={<Quiz p={[user1, code]} />} /> : <Route path='/' element={<Home />} />
+          }
+          {
+            user1 !== null ? <Route path={"/Pie"} element={<Chart />} /> : <Route path='/' element={<Home />} />
           }
         </Routes>
       </Router>
