@@ -44,7 +44,7 @@ const Quiz = (props) => {
                 const time = (today.getHours() < 10 ? '0' + today.getHours() : today.getHours()) + ':' + (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes());
                 console.log(date, time, q.StartTime);
                 function CompareDateandtime(str1, strdate, strtime) {
-                    const cyear = Number(strdate.slice(0, 4)) - 1;
+                    const cyear = Number(strdate.slice(0, 4));
                     const cmonth = Number(strdate.slice(5, 7));
                     const cdate = Number(strdate.slice(8, 10));
                     const year = Number(str1.slice(0, 4));
@@ -61,7 +61,53 @@ const Quiz = (props) => {
                         navg('/' + auth.currentUser.uid);
                     }
                     else if (cyear == year) {
+                        if (cmonth < month) {
+                            alert('Quiz has not yet started.');
+                            window.location.reload(false);
+                            navg('/' + auth.currentUser.uid);
+                        }
+                        else if (cmonth == month) {
+                            if (cdate < date) {
+                                alert('Quiz has not yet started.');
+                                window.location.reload(false);
+                                navg('/' + auth.currentUser.uid);
+                            }
+                            else if (cdate == date) {
+                                if (chrs < hrs) {
+                                    alert('Quiz has not yet started.');
+                                    window.location.reload(false);
+                                    navg('/' + auth.currentUser.uid);
+                                }
+                                else if (chrs == hrs) {
+                                    if (cmins < mins) {
+                                        alert('Quiz has not yet started.');
+                                        window.location.reload(false);
+                                        navg('/' + auth.currentUser.uid);
+                                    }
+                                    else if (cmins > mins) {
+                                        alert('Quiz has Ended.');
+                                        window.location.reload(false);
+                                        navg('/' + auth.currentUser.uid);
+                                    }
 
+                                }
+                                else {
+                                    alert('Quiz has Ended.');
+                                    window.location.reload(false);
+                                    navg('/' + auth.currentUser.uid);
+                                }
+                            }
+                            else {
+                                alert('Quiz has Ended.');
+                                window.location.reload(false);
+                                navg('/' + auth.currentUser.uid);
+                            }
+                        }
+                        else {
+                            alert('Quiz has Ended.');
+                            window.location.reload(false);
+                            navg('/' + auth.currentUser.uid);
+                        }
                     }
                     else {
                         alert('Quiz has Ended.');
