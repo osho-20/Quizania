@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/osho/Quizania/static/css/main.4198b622.css",
-    "main.js": "/osho/Quizania/static/js/main.0904265a.js",
-    "static/media/loginpage.png": "/osho/Quizania/static/media/loginpage.7a800eb63cf8fdf9e02e.png",
-    "static/media/Login.png": "/osho/Quizania/static/media/Login.d3719a63ecb1159c599b.png",
-    "static/media/slick.svg": "/osho/Quizania/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/osho/Quizania/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/osho/Quizania/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/osho/Quizania/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/osho/Quizania/index.html",
-    "main.4198b622.css.map": "/osho/Quizania/static/css/main.4198b622.css.map",
-    "main.0904265a.js.map": "/osho/Quizania/static/js/main.0904265a.js.map"
+    "main.css": "/Quizania/static/css/main.e402baeb.css",
+    "main.js": "/Quizania/static/js/main.5b1bb833.js",
+    "static/media/loginpage.png": "/Quizania/static/media/loginpage.7a800eb63cf8fdf9e02e.png",
+    "static/media/Login.png": "/Quizania/static/media/Login.d3719a63ecb1159c599b.png",
+    "static/media/slick.svg": "/Quizania/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Quizania/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Quizania/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Quizania/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Quizania/index.html",
+    "main.e402baeb.css.map": "/Quizania/static/css/main.e402baeb.css.map",
+    "main.5b1bb833.js.map": "/Quizania/static/js/main.5b1bb833.js.map"
   },
   "entrypoints": [
-    "static/css/main.4198b622.css",
-    "static/js/main.0904265a.js"
+    "static/css/main.e402baeb.css",
+    "static/js/main.5b1bb833.js"
   ]
 }
