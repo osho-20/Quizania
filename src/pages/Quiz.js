@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { getDatabase, ref, onValue } from 'firebase/database';
 import Input from '../components/Input';
 import PieChart from '../components/PieChart';
+import { auth } from '../firebase'
+import { useNavigate } from 'react-router-dom';
+var navg;
 const Quiz = (props) => {
     const db = getDatabase();
+    navg = useNavigate();
     const [data, setData] = useState({});
     const [id, setId] = useState(0);
     const [opt, setOpt] = useState({});
@@ -14,8 +18,7 @@ const Quiz = (props) => {
     const [score, setScore] = useState(0);
     const [start, setStart] = useState(0);
     const [gen, setGen] = useState({});
-    const [pie, setPie] = ({});
-    const [res, setRes] = (0);
+    const [pie, setPie] = useState({});
     useEffect(() => {
         const doc = ref(db, 'Questions/' + props.p[1]);
 
@@ -23,12 +26,9 @@ const Quiz = (props) => {
             const q = snap.val();
             setData(q);
             const key = q.key;
-            console.log(key);
             const doc1 = ref(db, 'Quiz/' + key);
             onValue(doc1, (snap) => {
                 const q = snap.val();
-                console.log('data= ', q);
-                console.log('key= ', key);
                 setGen({
                     dt: q.DurationTime[0] + q.DurationTime[1] + ' hrs ' + q.DurationTime[3] + q.DurationTime[4] + ' mins',
                     et: q.EndTime.slice(0, 10) + ' at ' + q.EndTime.slice(11, 13) + ' hrs ' + q.EndTime.slice(14, 16) + ' mins',
@@ -39,6 +39,37 @@ const Quiz = (props) => {
                     st: q.StartTime,
                     tq: q.TotalQuestions,
                 });
+                const today = new Date();
+                const date = today.getFullYear() + '-' + ((today.getMonth() + 1 < 10) ? '0' + (today.getMonth() + 1) : (today.getMonth() + 1)) + '-' + (today.getDate() < 10 ? '0' + today.getDate() : today.getDate());
+                const time = (today.getHours() < 10 ? '0' + today.getHours() : today.getHours()) + ':' + (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes());
+                console.log(date, time, q.StartTime);
+                function CompareDateandtime(str1, strdate, strtime) {
+                    const cyear = Number(strdate.slice(0, 4)) - 1;
+                    const cmonth = Number(strdate.slice(5, 7));
+                    const cdate = Number(strdate.slice(8, 10));
+                    const year = Number(str1.slice(0, 4));
+                    const month = Number(str1.slice(5, 7));
+                    const date = Number(str1.slice(8, 10));
+                    const chrs = Number(strtime.slice(0, 2));
+                    const cmins = Number(strtime.slice(3, 5));
+                    const hrs = Number(str1.slice(11, 13));
+                    const mins = Number(str1.slice(14, 16));
+                    console.log(cyear, year, cmonth, month, cdate, date, chrs, hrs, cmins, mins);
+                    if (cyear < year) {
+                        alert('Quiz has not yet started.');
+                        window.location.reload(false);
+                        navg('/' + auth.currentUser.uid);
+                    }
+                    else if (cyear == year) {
+
+                    }
+                    else {
+                        alert('Quiz has Ended.');
+                        window.location.reload(false);
+                        navg('/' + auth.currentUser.uid);
+                    }
+                };
+                CompareDateandtime(q.StartTime, date, time);
             })
         })
 
@@ -59,37 +90,45 @@ const Quiz = (props) => {
                 break;
             }
         }
+        let i = incorrect, c = correct, u = unattampted, p = partial;
         if (count > 0) {
             let marksperoption = ans.length;
             if (count !== marksperoption) {
                 setPartial(partial + 1);
+                p = partial + 1;
             }
             else {
                 setCorrect(correct + 1);
+                c = correct + 1;
             }
             marksperoption = (data.QuizQuestion[id].marks / marksperoption) * count;
-
-            console.log(count, marksperoption)
             setScore(score + marksperoption);
         }
         else if (count === 0) {
             setUnattampted(unattampted + 1);
+            u = unattampted + 1;
         }
         else {
             setIncorrect(incorrect + 1);
-        }
-        if (id === data?.QuizQuestion?.length) {
-            setRes(1);
-            setPie({ incorrect, correct, unattampted, partial });
+            i = incorrect + 1;
         }
         setId(id + 1);
         setOpt({});
+        console.log(id, data?.QuizQuestion?.length);
+        if (id + 1 === data?.QuizQuestion?.length) {
+            let arr = [];
+            arr.push({ name: 'Incorrect', value: i });
+            arr.push({ name: 'Correct', value: c });
+            arr.push({ name: 'Unattampted', value: u });
+            arr.push({ name: 'Partial', value: p });
+            setPie(arr);
+            return;
+        }
     }
     const startquiz = (e) => {
         e.preventDefault();
         setStart(1);
     }
-    console.log('general ', gen);
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {
@@ -134,7 +173,7 @@ const Quiz = (props) => {
                                                         }
                                                     </div>
                                                     {
-                                                        id === data?.QuizQuestion?.length ? <button id="quiz-submit-button" onClick={submit}>Submit Answer</button> : <button id="quiz-submit-button" onClick={submit}>Submit and End</button>
+                                                        id !== (data?.QuizQuestion?.length - 1) ? <button id="quiz-submit-button" onClick={submit}>Submit Answer</button> : <button id="quiz-submit-button" onClick={submit}>Submit and End</button>
                                                     }
                                                 </div> : <div style={{ height: '0px', width: '0px' }}></div>
                                         }
@@ -143,9 +182,9 @@ const Quiz = (props) => {
                             })
                         }
                         {
-                            res === 1 ? <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                            id === data?.QuizQuestion?.length ? <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                                 <h1>Result</h1>
-                                <div>
+                                <div id="res">
                                     <PieChart p={pie} />
                                     <div id="score-board">
                                         <div id="score-board">Score= {score}</div>

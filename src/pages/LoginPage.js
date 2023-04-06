@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../firebase'
 import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
@@ -25,6 +25,11 @@ const LoginPage = (props) => {
                 }
                 else {
                     alert('Kindly verify your email first.');
+                    await sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                            console.log('sent');
+                        })
+                        .catch((err) => { console.log(err) });
                     window.location.reload(false);
                     navg('/');
                 }
