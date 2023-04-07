@@ -10,6 +10,8 @@ import Quiz from './pages/Quiz'
 import EditQuiz from './pages/EditQuiz';
 import { getDoc, doc } from 'firebase/firestore'
 import Chart from './components/PieChart';
+import Timer from './components/Timer';
+import Clock from './components/Clock';
 export default function App() {
   const [user1, setUser] = useState('');
   const [keys, setKeys] = useState({ val: [] });
@@ -54,7 +56,7 @@ export default function App() {
             user1 !== null ? <Route path={"/play=" + user1.uid} element={<Quiz p={[user1, code]} />} /> : <Route path='/' element={<Home />} />
           }
           {
-            user1 !== null ? <Route path={"/Pie"} element={<Chart />} /> : <Route path='/' element={<Home />} />
+            user1 !== null ? <Route path={"/Pie"} element={<Clock />} /> : <Route path='/' element={<Home />} />
           }
         </Routes>
       </Router>

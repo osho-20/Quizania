@@ -10,7 +10,6 @@ export default function Input({ objValue, index }) {
         else {
             setOpt(1);
         }
-        console.log('opt= ', opt);
         value({ ...option, [index]: 1 - opt });
     }
     return (

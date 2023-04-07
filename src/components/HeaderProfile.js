@@ -7,7 +7,6 @@ const HeaderProfile = (props) => {
     const [bar, setBar] = useState("burger-bar unclicked");
     const [menu, setMenu] = useState("menu hidden");
     const [isMenuClicked, setIsMenuClicked] = useState(false);
-    console.log(user.photoURL)
     const updateMenu = () => {
         if (!isMenuClicked) {
             setBar("burger-bar clicked");

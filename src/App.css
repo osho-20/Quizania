@@ -74,7 +74,6 @@ body {
   display: inline-block;
   position: relative;
   color: wheat;
-
 }
 
 #hover-underline-animation:after {
@@ -151,6 +150,7 @@ body {
   margin: 0px;
   padding: 15px;
   opacity: 0.999;
+  border-left-color: #01ACB5;
 }
 
 .menu-profile {
@@ -422,6 +422,7 @@ input {
 .quiz1-box {
   color: whitesmoke;
   margin: 100px;
+  margin-top: 40px;
   width: 80%;
   background-color: #393F47;
   border-radius: 1em;
@@ -655,10 +656,12 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .input-box {
-  width: 15px;
-  height: 15px;
-  margin-left: 10px;
+  width: 17px;
+  height: 17px;
+  margin: 10px;
 }
+
+
 
 #score-board {
   height: 100%;
@@ -703,6 +706,53 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   flex-direction: row;
 }
 
+#clock {
+  width: 50px;
+  height: 50px;
+  padding: 6px;
+}
+
+#clocktimer {
+  background-color: #393F47;
+  width: 100px;
+  border-color: #393F47;
+  color: white;
+}
+
+#timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #393F47;
+  width: 120px;
+  height: 60px;
+  float: right;
+  font-size: 20px;
+  padding: 8px;
+  margin: 25px;
+  border-radius: 0.3em;
+}
+
+#starttimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01ACB5;
+  width: 80px;
+  color: white;
+  height: 50px;
+  padding: 15px;
+  border-radius: 0.2em;
+}
+
+#center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 @media screen and (max-width:1100px) {
   .question-button {
     display: flex;
@@ -711,6 +761,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     align-items: center;
     width: 100%;
   }
+
   #res {
     display: flex;
     align-items: center;
@@ -903,7 +954,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
   .quiz1-box {
     width: 350px;
-    margin: 100px 20px;
+    margin: 60px 20px;
     border-radius: 0.5em;
   }
 

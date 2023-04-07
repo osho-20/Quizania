@@ -22,7 +22,6 @@ const Quiz = () => {
     const auth = getAuth();
     const Create = async (e) => {
         e.preventDefault();
-
         const QuizName = quizName;
         const QuizDescription = quizDescrp;
         const QuizCreater = quizCreater;
@@ -128,7 +127,6 @@ const Quiz = () => {
             {
                 dis === 0 ? <p></p> : <AddQuestion p={[quiz, key]} />
             }
-
         </div>
     )
 }
