@@ -3,13 +3,10 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import Input from '../components/Input';
 import PieChart from '../components/PieChart';
 import { auth } from '../firebase'
-import { useNavigate } from 'react-router-dom';
 import Timer from '../components/Timer';
 import Clock from '../components/Clock';
-var navg;
 const Quiz = (props) => {
     const db = getDatabase();
-    navg = useNavigate();
     const [data, setData] = useState({});
     const [id, setId] = useState(0);
     const [opt, setOpt] = useState({});
@@ -65,22 +62,22 @@ const Quiz = (props) => {
                         alert('Quiz has not yet started.');
                         window.location = '/Quizania/' + auth.currentUser.uid;
                     }
-                    else if (cyear == year) {
+                    else if (cyear === year) {
                         if (cmonth < month) {
                             alert('Quiz has not yet started.');
                             window.location = '/Quizania/' + auth.currentUser.uid;
                         }
-                        else if (cmonth == month) {
+                        else if (cmonth === month) {
                             if (cdate < date) {
                                 alert('Quiz has not yet started.');
                                 window.location = '/Quizania/' + auth.currentUser.uid;
                             }
-                            else if (cdate == date) {
+                            else if (cdate === date) {
                                 if (chrs < hrs) {
                                     alert('Quiz has not yet started.');
                                     window.location = '/Quizania/' + auth.currentUser.uid;
                                 }
-                                else if (chrs == hrs) {
+                                else if (chrs === hrs) {
                                     if (cmins < mins) {
                                         alert('Quiz has not yet started.');
                                         window.location = '/Quizania/' + auth.currentUser.uid;
@@ -105,22 +102,22 @@ const Quiz = (props) => {
                         alert('Quiz has Ended.');
                         window.location = '/Quizania/' + auth.currentUser.uid;
                     }
-                    else if (cyear == year) {
+                    else if (cyear === year) {
                         if (cmonth > month) {
                             alert('Quiz has Ended.');
                             window.location = '/Quizania/' + auth.currentUser.uid;
                         }
-                        else if (cmonth == month) {
+                        else if (cmonth === month) {
                             if (cdate > date) {
                                 alert('Quiz has Ended.');
                                 window.location = '/Quizania/' + auth.currentUser.uid;
                             }
-                            else if (cdate == date) {
+                            else if (cdate === date) {
                                 if (chrs > hrs) {
                                     alert('Quiz has Ended.');
                                     window.location = '/Quizania/' + auth.currentUser.uid;
                                 }
-                                else if (chrs == hrs) {
+                                else if (chrs === hrs) {
                                     if (cmins > mins) {
                                         alert('Quiz has Ended.');
                                         window.location = '/Quizania/' + auth.currentUser.uid;

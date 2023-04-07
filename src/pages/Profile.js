@@ -14,7 +14,7 @@ const Profile = (props) => {
     const [edit, setEdit] = useState(1);
     const auth = getAuth();
     if (phone === "null") {
-        setPhone('00000 00000');
+        setPhone('0000000000');
     }
 
     const submit = (e) => {
@@ -41,7 +41,7 @@ const Profile = (props) => {
                     })
             }
             console.log(fullName, phone);
-            auth.updateCurrentUser(auth.currentUser, {
+            auth.updatetUser(auth.currentUser, {
                 displayName: fullName,
                 phoneNumber: phone.toString(),
                 photoURL: Photo,
@@ -57,10 +57,10 @@ const Profile = (props) => {
 
     }
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <Header />
-            <div className="register">
-                <form onSubmit={submit} className="register-page">
+            <div className="profile">
+                <form onSubmit={submit} className="profile-page">
                     <img src={auth.currentUser.photoURL === null ? Photo : auth.currentUser.photoUR} />
                     <InputText
                         type='file'
@@ -72,19 +72,27 @@ const Profile = (props) => {
                         }}
                     />
                     <p className='heading'>Profile</p>
-                    <label>Full Name</label>
-                    <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" disabled={edit} />
-                    <label>Email</label>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="xyz@gmail.com" disabled={edit} />
-                    <label>Phone Number</label>
-                    <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" pattern="[0-9]{10}" placeholder="XXXXXXXXXX" disabled={edit} />
-                    <label>Password</label>
-                    <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="******" disabled={edit} />
+                    <div style={{ textAlign: 'left', margin: '10px' }}>
+                        <label id="create-quiz-label" style={{ width: '220px' }}>Full Name</label>
+                        <input id="edit" value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" disabled={edit} />
+                    </div>
+                    <div style={{ textAlign: 'left', margin: '10px' }}>
+                        <label id="create-quiz-label" style={{ width: '220px' }}>Email</label>
+                        <input id="edit" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="xyz@gmail.com" disabled={edit} />
+                    </div>
+                    <div style={{ textAlign: 'left', margin: '10px' }}>
+                        <label id="create-quiz-label" style={{ width: '220px' }}>Phone Number</label>
+                        <input id="edit" value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" pattern="[0-9]{10}" placeholder="XXXXXXXXXX" disabled={edit} />
+                    </div>
+                    <div style={{ textAlign: 'left', margin: '10px' }}>
+                        <label id="create-quiz-label" style={{ width: '220px' }}>Password</label>
+                        <input id="edit" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="******" disabled={edit} />
+                    </div>
                     {
                         error !== '' ? <p>{error}</p> : <p></p>
                     }
                     {
-                        edit === 1 ? <button type="submit" onClick={(e) => setEdit(0)}>Edit</button> : <button type="submit" onClick={(e) => setEdit(1)}> Save</button>
+                        edit === 1 ? <button id="login-button" type="submit" onClick={(e) => setEdit(0)}>Edit</button> : <button type="submit" id="login-button" onClick={(e) => setEdit(1)}> Save</button>
                     }
                 </form>
             </div>
