@@ -9,7 +9,6 @@ const User = (props) => {
     const navg = useNavigate();
     const auth = getAuth();
     const [code, setCode] = useState('');
-
     if (auth.currentUser.emailVerified === false) {
         alert('First verify your Email.');
         navg('/');

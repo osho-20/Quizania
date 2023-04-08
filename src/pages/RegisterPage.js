@@ -9,14 +9,6 @@ const RegisterPage = (props) => {
     const [fullName, setName] = useState('');
     const [pass, setPass] = useState('');
     const [error, setError] = useState('');
-    const create = async () => {
-        console.log(auth.currentUser)
-        await sendEmailVerification(auth.currentUser)
-            .then(() => {
-                console.log('sent');
-            })
-            .catch((err) => { console.log(err) });
-    }
     const submit = (e) => {
         e.preventDefault();
         if (!email || !pass || !fullName) {
@@ -34,8 +26,15 @@ const RegisterPage = (props) => {
                     name: auth.currentUser.displayName,
                     email: auth.currentUser.email,
                 })
+                if (auth.currentUser !== null) {
+                    console.log('user= ', auth.currentUser);
+                    await sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                            console.log('sent');
+                        })
+                        .catch((err) => { console.log(err) });
+                }
                 // window.location.reload(false);
-                create();
                 return;
             })
             .catch((err) => { console.log("Error= ", err); return; });

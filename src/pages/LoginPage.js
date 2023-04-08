@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../firebase'
+import { Link } from 'react-router-dom'
 import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
@@ -25,16 +26,14 @@ const LoginPage = (props) => {
                 }
                 else {
                     alert('Kindly verify your email first.');
-                    await sendEmailVerification(auth.currentUser)
-                        .then(() => {
-                            console.log('sent');
-                        })
-                        .catch((err) => { console.log(err) });
-                    window.location.reload(false);
-                    navg('/');
+                    window.location = '/Quizania/Quizani';
                 }
             })
             .catch((err) => { alert("User Not Found.") });
+    }
+    const forgot = (e) => {
+        e.preventDefault();
+        navg('/Quiz')
     }
     return (
         <div id="outer-login-box" >
@@ -55,6 +54,9 @@ const LoginPage = (props) => {
                         </div>
                         <div>
                             <button type="submit" id="login-button">Login</button>
+                            <div style={{ margin: '0px', padding: '0px'}}>
+                                <p onClick={() => navg('/forgot')} id="forgot-link">Forgot Password</p>
+                            </div>
                         </div>
                         <div>
                             <p style={{ marginBottom: '2px', color: 'white' }}>Don't have an account?</p>

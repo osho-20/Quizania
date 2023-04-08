@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
-import Header from '../components/Header'
-import Photo from '../components/img/profile.jpeg'
+import Header from '../components/HeaderProfile'
+import photo from '../components/img/profile.jpeg'
 import { InputText } from 'primereact/inputtext'
-import { getAuth, sendEmailVerification, updateEmail } from 'firebase/auth'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { app } from '../firebase'
+import { getAuth, sendEmailVerification, updateEmail, updateProfile } from 'firebase/auth'
 const Profile = (props) => {
     const user = props.props;
-    const no = '' + user.phoneNumber;
+    const storage = getStorage(app);
     const [email, setEmail] = useState(user.email);
     const [fullName, setName] = useState(user.displayName);
     const [pass, setPass] = useState('');
-    const [phone, setPhone] = useState(no);
     const [error, setError] = useState('');
     const [edit, setEdit] = useState(1);
     const auth = getAuth();
-    if (phone === "null") {
-        setPhone('0000000000');
-    }
-
+    const [Photo, setPhoto] = useState(auth.currentUser.photoURL);
     const submit = (e) => {
         e.preventDefault();
         if (email === '' || fullName === '') {
@@ -40,10 +38,9 @@ const Profile = (props) => {
                         console.log('sent');
                     })
             }
-            console.log(fullName, phone);
-            auth.updatetUser(auth.currentUser, {
+            console.log(fullName, auth.currentUser.photoURL);
+            updateProfile(auth.currentUser, {
                 displayName: fullName,
-                phoneNumber: phone.toString(),
                 photoURL: Photo,
             }).then(() => {
                 alert('Successfully Updated');
@@ -53,48 +50,79 @@ const Profile = (props) => {
             }).catch((error) => {
                 console.log(error);
             })
+            // updatePassword(auth.currentUser, pass).then(() => {
+            //     sendPasswordResetEmail(auth, email)
+            //         .then(() => {
+            //             // Password reset email sent!
+            //             // ..
+            //         })
+            //         .catch((error) => {
+            //             console.log(error);
+            //         });
+            // }).then(() => { console.log() })
+            // window.location.reload(false);
         }
 
-    }
+    };
+    const upload = (e) => {
+        console.log('file= ', e);
+        const imgref = ref(storage, auth.currentUser.uid);
+        uploadBytes(imgref, e).then(() => {
+            getDownloadURL(imgref).then((url) => {
+                setPhoto(url);
+                console.log('url= ', url);
+            }).catch((err) => {
+                console.log('error= ', err);
+            });
+        }).catch((err) => {
+            console.log('error2= ', err);
+        })
+    };
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <Header />
-            <div className="profile">
-                <form onSubmit={submit} className="profile-page">
-                    <img src={auth.currentUser.photoURL === null ? Photo : auth.currentUser.photoUR} />
-                    <InputText
-                        type='file'
-                        accept='/image/*'
-                        disabled={edit}
-                        onChange={(e) => {
-                            const file = e.target.files[0];
-                            console.log(file);
-                        }}
-                    />
-                    <p className='heading'>Profile</p>
-                    <div style={{ textAlign: 'left', margin: '10px' }}>
-                        <label id="create-quiz-label" style={{ width: '220px' }}>Full Name</label>
-                        <input id="edit" value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" disabled={edit} />
-                    </div>
-                    <div style={{ textAlign: 'left', margin: '10px' }}>
-                        <label id="create-quiz-label" style={{ width: '220px' }}>Email</label>
-                        <input id="edit" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="xyz@gmail.com" disabled={edit} />
-                    </div>
-                    <div style={{ textAlign: 'left', margin: '10px' }}>
+        <div >
+            <Header p={auth.currentUser} />
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div className="profile">
+                    <form onSubmit={submit} className="profile-page">
+                        <InputText
+                            type='file'
+                            accept='/image/*'
+                            disabled={edit}
+                            id="upload-image"
+                            style={{ display: 'none' }}
+                            onChange={(e1) => {
+                                const file = e1.target.files[0];
+                                upload(file);
+                            }}
+                        />
+                        <label htmlFor="upload-image" id="photo-box">
+                            <img src={Photo === null ? photo : Photo} alt={photo} id="profile-photo" />
+                        </label>
+                        <p className='heading'>Profile</p>
+                        <div style={{ textAlign: 'left', margin: '10px' }}>
+                            <label id="create-quiz-label" style={{ width: '220px' }}>Full Name</label>
+                            <input id="edit" value={fullName} onChange={(e) => setName(e.target.value)} type="name" placeholder="xyz" disabled={edit} />
+                        </div>
+                        <div style={{ textAlign: 'left', margin: '10px' }}>
+                            <label id="create-quiz-label" style={{ width: '220px' }}>Email</label>
+                            <input id="edit" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="xyz@gmail.com" disabled={edit} />
+                        </div>
+                        {/* <div style={{ textAlign: 'left', margin: '10px' }}>
                         <label id="create-quiz-label" style={{ width: '220px' }}>Phone Number</label>
                         <input id="edit" value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" pattern="[0-9]{10}" placeholder="XXXXXXXXXX" disabled={edit} />
-                    </div>
-                    <div style={{ textAlign: 'left', margin: '10px' }}>
+                    </div> */}
+                        {/* <div style={{ textAlign: 'left', margin: '10px' }}>
                         <label id="create-quiz-label" style={{ width: '220px' }}>Password</label>
                         <input id="edit" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="******" disabled={edit} />
-                    </div>
-                    {
-                        error !== '' ? <p>{error}</p> : <p></p>
-                    }
-                    {
-                        edit === 1 ? <button id="login-button" type="submit" onClick={(e) => setEdit(0)}>Edit</button> : <button type="submit" id="login-button" onClick={(e) => setEdit(1)}> Save</button>
-                    }
-                </form>
+                    </div> */}
+                        {
+                            error !== '' ? <p>{error}</p> : <p></p>
+                        }
+                        {
+                            edit === 1 ? <button id="login-button" type="submit" onClick={(e) => setEdit(0)}>Edit</button> : <button type="submit" id="login-button" onClick={(e) => setEdit(1)}> Save</button>
+                        }
+                    </form>
+                </div>
             </div>
         </div >
     )
