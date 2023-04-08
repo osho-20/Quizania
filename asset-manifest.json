@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Quizania/static/css/main.bdb7ce46.css",
-    "main.js": "/Quizania/static/js/main.5561d8bc.js",
+    "main.css": "/Quizania/static/css/main.3eab3576.css",
+    "main.js": "/Quizania/static/js/main.56454f9d.js",
     "static/media/Clock.gif": "/Quizania/static/media/Clock.249892cc8b41215c5b3b.gif",
     "static/media/loginpage.png": "/Quizania/static/media/loginpage.7a800eb63cf8fdf9e02e.png",
     "static/media/Login.png": "/Quizania/static/media/Login.d3719a63ecb1159c599b.png",
@@ -10,11 +10,11 @@
     "static/media/slick.ttf": "/Quizania/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Quizania/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Quizania/index.html",
-    "main.bdb7ce46.css.map": "/Quizania/static/css/main.bdb7ce46.css.map",
-    "main.5561d8bc.js.map": "/Quizania/static/js/main.5561d8bc.js.map"
+    "main.3eab3576.css.map": "/Quizania/static/css/main.3eab3576.css.map",
+    "main.56454f9d.js.map": "/Quizania/static/js/main.56454f9d.js.map"
   },
   "entrypoints": [
-    "static/css/main.bdb7ce46.css",
-    "static/js/main.5561d8bc.js"
+    "static/css/main.3eab3576.css",
+    "static/js/main.56454f9d.js"
   ]
 }
