@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../firebase'
-import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
@@ -12,7 +11,6 @@ const LoginPage = (props) => {
     const navg = useNavigate();
     const submit = (e) => {
         e.preventDefault();
-        console.log(email, pass);
         if (!email || !pass) {
             setError('**Please fill all fields**');
             return;
@@ -21,6 +19,11 @@ const LoginPage = (props) => {
         signInWithEmailAndPassword(auth, email, pass)
             .then(async (resp) => {
                 if (auth.currentUser.emailVerified) {
+                    Swal.fire(
+                        'Welcome!',
+                        'Logged In Successfully.',
+                        'success'
+                    )
                     const path = '/' + resp.user.uid;
                     navg(path);
                     return;

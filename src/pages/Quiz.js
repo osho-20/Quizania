@@ -188,30 +188,31 @@ const Quiz = (props) => {
         e.preventDefault();
         const keys = Object.keys(opt);
         const ans = data.QuizQuestion[id].answer;
-        let count = 0;
+        let cnt = 0;
         for (const options of keys) {
-            let check = false;
-            ans.find((answer) => { check = (answer === Number(options) + 1) });
-            if (opt[options] === 1 && check) {
-                count = count + 1;
+            // let check = false;
+            let count = ans.reduce((n, x) => n + (x === Number(options) + 1), 0);
+            // ans.find((answer) => { check = (answer === Number(options) + 1) });
+            if (opt[options] === 1 && count > 0) {
+                cnt = cnt+ count;
             }
-            else if (opt[options] === 1 && !check) {
+            else if (opt[options] === 1 && count === 0) {
                 count = -1;
                 break;
             }
         }
-        if (count > 0) {
+        if (cnt > 0) {
             let marksperoption = ans.length;
-            if (count !== marksperoption) {
+            if (cnt !== marksperoption) {
                 setPartial(partial + 1);
             }
             else {
                 setCorrect(correct + 1);
             }
-            marksperoption = (data.QuizQuestion[id].marks / marksperoption) * count;
+            marksperoption = (data.QuizQuestion[id].marks / marksperoption) * cnt;
             setScore(score + marksperoption);
         }
-        else if (count === 0) {
+        else if (cnt === 0) {
             setUnattampted(unattampted + 1);
         }
         else {

@@ -31,9 +31,6 @@ export default function SimpleSlider(props) {
             })
         }
     }
-    // const [name, setName] = useState('');
-    // const [keys, setKeys] = useState([]);
-    // const [code, setCode] = useState('');
     useEffect(() => {
         get();
     }, []);
@@ -90,7 +87,7 @@ export default function SimpleSlider(props) {
                         return (
                             <div>
                                 <img src={Quiz} style={{ padding: '20px' }} />
-                                <p style={{ color: 'white', fontFamily: 'Poppins', margin: '0px' }}>{key.Name}</p>
+                                <p style={{ color: 'white', fontFamily: 'Poppins', margin: '0px' }}>{key.Name.toUpperCase()}</p>
                                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                     <CopyToClipboard text={key.code} style={{ width: '100px' }}>
                                         <button >Code</button>

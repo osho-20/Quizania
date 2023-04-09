@@ -43,7 +43,7 @@ const Progress = () => {
       <Header p={auth.currentUser} />
       <div id="progress">
         <div>
-          <PieChart p={[pie, '', 0, 1]} />
+          <PieChart p={[pie, '', 0, 0]} />
           <h1 id="pie-heading">Pie Chart </h1>
         </div>
         <div id="outer-container">
