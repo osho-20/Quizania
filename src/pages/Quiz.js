@@ -208,7 +208,7 @@ const Quiz = (props) => {
                                 <li>The End button will appear on the last page, clicking it will submit the quiz.</li>
                             </ul>
                             {
-                                sttimer === 0 ? < button id="start" onClick={startquiz}>Start</button> : <div id="center"><Timer seconds={[2, "starttimer", setStart, color, setColor]} /></div>
+                                sttimer === 0 ? < button id="start" onClick={startquiz}>Start</button> : <div id="center"><Timer seconds={[10, "starttimer", setStart, color, setColor]} /></div>
                             }
                         </div>
                         : <div className='quiz1-box'>
@@ -249,13 +249,31 @@ const Quiz = (props) => {
                                             displayres === 1 ? <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                                                 <h1>Result</h1>
                                                 <div id="res">
-                                                    <PieChart p={[pie, k, score]} />
-                                                    <div id="score-board">
-                                                        <div id="score-board">Score= {score}</div>
-                                                        <div id="score-board">Incorrect answer= {incorrect}</div>
-                                                        <div id="score-board">Correct answer= {correct}</div>
-                                                        <div id="score-board">Partial-Correct answer= {partial}</div>
-                                                        <div id="score-board">Unattampted answer= {unattampted}</div>
+                                                    <PieChart p={[pie, k, score, 1]} />
+                                                    <div id="score-board-outer">
+                                                        <h1 id="score-board-header">Score Board</h1>
+                                                        <div id="score-board">
+                                                            <div id="inner-label" style={{ width: '250px', textAlign: 'left' }}>Score</div>
+                                                            <div style={{ width: '15px' }}>{score}</div>
+                                                        </div>
+                                                        <div id="score-board">
+                                                            <div id="inner-label" style={{ width: '250px', textAlign: 'left' }}>Incorrect answer</div>
+                                                            <div style={{ width: '15px' }}> {incorrect}</div>
+                                                        </div>
+                                                        <div id="score-board">
+                                                            <div id="inner-label" style={{ width: '250px', textAlign: 'left' }}>Correct answer</div>
+                                                            <div style={{ width: '15px' }}> {correct}</div>
+                                                        </div>
+                                                        <div id="score-board">
+                                                            <div id="inner-label" style={{ width: '250px', textAlign: 'left' }}>Partial-Correct answer</div>
+                                                            <div style={{ width: '15px' }}>{partial}</div>
+                                                        </div>
+
+                                                        <div id="score-board">
+                                                            <div id="inner-label" style={{ width: '250px', textAlign: 'left' }}>Unattampted answer</div>
+                                                            <div style={{ width: '15px' }}> {unattampted}</div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div> : <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>

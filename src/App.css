@@ -383,6 +383,8 @@ textarea:focus {
   cursor: pointer;
 }
 
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -701,23 +703,31 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 #score-board {
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 15px;
   margin: 20px;
   padding-bottom: 20px;
-  width: 100%;
+  width: 50%;
   margin: 0px;
 }
 
-.score-board {
+#score-board-outer {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  font-size: 15px;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 0.5em;
+  margin: 80px 20px;
 }
+
+
 
 #instructions {
   background-color: whitesmoke;
@@ -734,11 +744,21 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   font-weight: 200;
 }
 
+#score-board-header {
+  font-family: 'poppins';
+  font-weight: 100;
+  font-family: 20px;
+}
+
 #res {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
+}
+
+#res div {
+  width: 80%;
 }
 
 #clock {
@@ -774,7 +794,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
   background-color: #01ACB5;
-  width: 80px;
+  width: 100px;
   color: white;
   height: 50px;
   padding: 15px;
@@ -785,7 +805,6 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .profile-page {
@@ -805,6 +824,168 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   width: 700px;
   padding: 10px;
   border-radius: 1em;
+}
+
+#progress {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 20px;
+  color: white;
+}
+
+#pie-heading {
+  margin-top: 0px;
+  margin-bottom: 100px;
+  font-family: 'Poppins';
+  font-weight: 200;
+}
+
+#container {
+  width: 90%;
+  background-color: white;
+  color: black;
+  display: none;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+
+}
+
+#container1 {
+  width: 90%;
+  background-color: white;
+  color: black;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+#row {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+#each-progress {
+  list-style-type: none;
+  margin: 10px;
+  width: 90%;
+  text-align: left;
+  padding: 20px;
+}
+
+#each-progress1 {
+  list-style-type: none;
+  margin: 10px;
+  width: 90%;
+  text-align: center;
+  padding: 20px;
+}
+
+#quiz-name {
+  background-color: #393F47;
+  text-align: left;
+  padding: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+#quiz-name:hover {
+  cursor: pointer;
+}
+
+#down {
+  width: 35px;
+  height: 20px;
+}
+
+#outer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+#inner-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.recharts-wrapper svg {
+  width: 100% !important;
+}
+
+.recharts-layer recharts-pie {
+  font-size: 20px !important;
+}
+
+.recharts-layer {
+  font-size: 20px;
+}
+
+#pie-label {
+  color: black;
+  width: 20px !important;
+  font-size: 16px;
+  background-color: white;
+  width: 100%;
+}
+
+#inner-label {
+  width: 250px;
+  text-align: left;
+}
+
+.recharts-legend-wrapper,
+.recharts-default-legend,
+.recharts-wrapper {
+  width: 100% !important;
+}
+
+/* .recharts-default-legend {
+  padding: 20px !important;
+} */
+
+.recharts-legend-wrapper {
+  font-size: 10px;
+}
+
+.report {
+  /* background-color: #393F47; */
+  color: white;
+  width: 100%;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#report-container {
+  background-color: #393F47;
+  width: 80%;
+  border-radius: 0.5em;
+  padding: 20px;
+}
+
+#report-box {
+  width: 100%;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  margin: 5px;
+  border: 2.5px #00FFF5 solid;
+  font-size: 20px;
+  background-color: white;
+  color: black;
 }
 
 @media screen and (max-width:1100px) {
@@ -900,11 +1081,10 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   #score-board {
     height: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    margin: 20px;
     padding-bottom: 20px;
     width: 100%;
     margin: 0px;
@@ -1060,5 +1240,49 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
   #edit {
     width: 100%;
+  }
+
+  #each-progress {
+    margin: 10px;
+    width: 250px;
+    text-align: left;
+    padding: 20px;
+  }
+
+  #each-progress1 {
+    margin: 10px;
+    width: 100px;
+    text-align: left;
+    padding: 20px;
+    text-align: center;
+  }
+
+  #progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 80px 20px;
+  }
+
+  .recharts-wrapper svg {
+    width: 100% !important;
+  }
+
+  #inner-label {
+    width: 150px !important;
+    text-align: left;
+  }
+
+  .recharts-layer {
+    font-size: 35px;
+  }
+
+  #pie-label {
+    color: black;
+    width: 20px !important;
+    font-size: 16px;
+    background-color: white;
+    /* width: 10%; */
   }
 }

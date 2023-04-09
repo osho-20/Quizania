@@ -7,7 +7,7 @@ const Clock = (props) => {
     return (
         <div id="timer">
             {/* <img src={clock} id="clock" /> */}
-            <Timer seconds={[props.q[2], "clocktimer", setEnd, color, setColor, props.q[0], props.q[1]]} />
+            <Timer seconds={[props?.q[2], "clocktimer", setEnd, color, setColor, props?.q[0], props?.q[1]]} />
         </div>
     )
 }

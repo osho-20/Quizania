@@ -9,8 +9,10 @@ import Create from './pages/CreateQuiz'
 import Quiz from './pages/Quiz'
 import EditQuiz from './pages/EditQuiz';
 import { getDoc, doc } from 'firebase/firestore'
-import Chart from './components/PieChart';
-import Timer from './components/Timer';
+import Progress from './pages/Progress'
+import ReportIssue from './pages/ReportIssue';
+// import Chart from './components/PieChart';
+// import Timer from './components/Timer';
 import Clock from './components/Clock';
 export default function App() {
   const [user1, setUser] = useState('');
@@ -56,7 +58,10 @@ export default function App() {
             user1 !== null ? <Route path={"/play=" + user1.uid} element={<Quiz p={[user1, code]} />} /> : <Route path='/' element={<Home />} />
           }
           {
-            user1 !== null ? <Route path={"/Pie"} element={<Clock />} /> : <Route path='/' element={<Home />} />
+            user1 !== null ? <Route path={"/profile=" + user1.uid + '/progress'} element={<Progress />} /> : <Route path='/' element={<Home />} />
+          }
+          {
+            user1 !== null ? <Route path={"/report/" + user1.uid} element={<ReportIssue />} /> : <Route path='/' element={<Home />} />
           }
         </Routes>
       </Router>
