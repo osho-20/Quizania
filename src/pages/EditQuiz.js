@@ -4,6 +4,7 @@ import { getDatabase, ref, onValue, update } from 'firebase/database';
 import DisplayQuestions from '../components/DisplayQuestions';
 import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const EditQuiz = (props) => {
     const db = getDatabase();
     const navg = useNavigate();
@@ -186,7 +187,11 @@ const EditQuiz = (props) => {
             QuizQuestion: quiz.questions,
         }).then((res) => {
         }).catch((err) => { console.log(err) });
-        alert('Quiz Updated');
+        Swal.fire(
+            'Hurray!!',
+            'The Quiz Updated Successfully.',
+            'success'
+        )
         navg('/' + auth.currentUser.uid);
     }
     const StartEditing = async (e) => {

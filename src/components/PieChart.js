@@ -5,9 +5,9 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { ref, getDatabase, onValue } from 'firebase/database'
 const PieChart = (props) => {
   const db = getDatabase();
-  // if (props.p[0].length === 5) {
-  //   props.p[0].pop();
-  // }
+  if (props.p[0].length === 5) {
+    props.p[0].pop();
+  }
   const COLORS = ["green", "red", "white", "blue"];
   const update = async () => {
     const document = doc(firestore, 'creaters', auth.currentUser.uid);

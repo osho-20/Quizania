@@ -31,15 +31,15 @@ export default function SimpleSlider(props) {
             })
         }
     }
-    const [name, setName] = useState('');
-    const [keys, setKeys] = useState([]);
-    const [code, setCode] = useState('');
+    // const [name, setName] = useState('');
+    // const [keys, setKeys] = useState([]);
+    // const [code, setCode] = useState('');
     useEffect(() => {
         get();
     }, []);
     var settings = {
         dots: true,
-        infinite: false,
+        infinite: true,
         speed: 1500,
         arrows: false,
         autoplay: true,
@@ -95,7 +95,7 @@ export default function SimpleSlider(props) {
                                     <CopyToClipboard text={key.code} style={{ width: '100px' }}>
                                         <button >Code</button>
                                     </CopyToClipboard>
-                                    <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'}><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit</button></Link>
+                                    <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'}><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit </button></Link>
                                 </div>
                             </div>
                         )

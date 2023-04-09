@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../firebase'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2';
 import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
@@ -25,11 +26,22 @@ const LoginPage = (props) => {
                     return;
                 }
                 else {
-                    alert('Kindly verify your email first.');
-                    window.location = '/Quizania/Quizani';
+                    Swal.fire(
+                        'Registered!',
+                        'Kindly verify your email and login again.',
+                        'info'
+                    ).then(() => {
+                        window.location.reload(false);
+                    });
                 }
             })
-            .catch((err) => { alert("User Not Found.") });
+            .catch((err) => {
+                Swal.fire(
+                    'Oops!',
+                    'Invalid email address/password.',
+                    'error'
+                )
+            });
     }
     const forgot = (e) => {
         e.preventDefault();
@@ -54,7 +66,7 @@ const LoginPage = (props) => {
                         </div>
                         <div>
                             <button type="submit" id="login-button">Login</button>
-                            <div style={{ margin: '0px', padding: '0px'}}>
+                            <div style={{ margin: '0px', padding: '0px' }}>
                                 <p onClick={() => navg('/forgot')} id="forgot-link">Forgot Password</p>
                             </div>
                         </div>

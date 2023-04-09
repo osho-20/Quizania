@@ -5,6 +5,7 @@ import PieChart from '../components/PieChart';
 import { auth } from '../firebase'
 import Timer from '../components/Timer';
 import Clock from '../components/Clock';
+import Swal from 'sweetalert2';
 const Quiz = (props) => {
     const db = getDatabase();
     const [data, setData] = useState({});
@@ -59,28 +60,53 @@ const Quiz = (props) => {
                     const hrs = Number(str1.slice(11, 13));
                     const mins = Number(str1.slice(14, 16));
                     if (cyear < year) {
-                        alert('Quiz has not yet started.');
-                        window.location = '/Quizania/' + auth.currentUser.uid;
+                        Swal.fire(
+                            'Oops!',
+                            'The quiz has not started yet.',
+                            'error'
+                        ).then(() => {
+                            window.location = '/Quizania/' + auth.currentUser.uid;
+                        });
                     }
                     else if (cyear === year) {
                         if (cmonth < month) {
-                            alert('Quiz has not yet started.');
-                            window.location = '/Quizania/' + auth.currentUser.uid;
+                            Swal.fire(
+                                'Oops!',
+                                'The quiz has not started yet.',
+                                'error'
+                            ).then(() => {
+                                window.location = '/Quizania/' + auth.currentUser.uid;
+                            });
                         }
                         else if (cmonth === month) {
                             if (cdate < date) {
-                                alert('Quiz has not yet started.');
-                                window.location = '/Quizania/' + auth.currentUser.uid;
+                                Swal.fire(
+                                    'Oops!',
+                                    'The quiz has not started yet.',
+                                    'error'
+                                ).then(() => {
+                                    window.location = '/Quizania/' + auth.currentUser.uid;
+                                });
                             }
                             else if (cdate === date) {
                                 if (chrs < hrs) {
-                                    alert('Quiz has not yet started.');
-                                    window.location = '/Quizania/' + auth.currentUser.uid;
+                                    Swal.fire(
+                                        'Oops!',
+                                        'The quiz has not started yet.',
+                                        'error'
+                                    ).then(() => {
+                                        window.location = '/Quizania/' + auth.currentUser.uid;
+                                    });
                                 }
                                 else if (chrs === hrs) {
                                     if (cmins < mins) {
-                                        alert('Quiz has not yet started.');
-                                        window.location = '/Quizania/' + auth.currentUser.uid;
+                                        Swal.fire(
+                                            'Oops!',
+                                            'The quiz has not started yet.',
+                                            'error'
+                                        ).then(() => {
+                                            window.location = '/Quizania/' + auth.currentUser.uid;
+                                        });
                                     }
                                 }
                             }
@@ -99,28 +125,53 @@ const Quiz = (props) => {
                     const hrs = Number(str1.slice(11, 13));
                     const mins = Number(str1.slice(14, 16));
                     if (cyear > year) {
-                        alert('Quiz has Ended.');
-                        window.location = '/Quizania/' + auth.currentUser.uid;
+                        Swal.fire(
+                            'Oops!',
+                            'The quiz is no more available.',
+                            'error'
+                        ).then(() => {
+                            window.location = '/Quizania/' + auth.currentUser.uid;
+                        });
                     }
                     else if (cyear === year) {
                         if (cmonth > month) {
-                            alert('Quiz has Ended.');
-                            window.location = '/Quizania/' + auth.currentUser.uid;
+                            Swal.fire(
+                                'Oops!',
+                                'The quiz is no more available.',
+                                'error'
+                            ).then(() => {
+                                window.location = '/Quizania/' + auth.currentUser.uid;
+                            });
                         }
                         else if (cmonth === month) {
                             if (cdate > date) {
-                                alert('Quiz has Ended.');
-                                window.location = '/Quizania/' + auth.currentUser.uid;
+                                Swal.fire(
+                                    'Oops!',
+                                    'The quiz is no more available.',
+                                    'error'
+                                ).then(() => {
+                                    window.location = '/Quizania/' + auth.currentUser.uid;
+                                });
                             }
                             else if (cdate === date) {
                                 if (chrs > hrs) {
-                                    alert('Quiz has Ended.');
-                                    window.location = '/Quizania/' + auth.currentUser.uid;
+                                    Swal.fire(
+                                        'Oops!',
+                                        'The quiz is no more available.',
+                                        'error'
+                                    ).then(() => {
+                                        window.location = '/Quizania/' + auth.currentUser.uid;
+                                    });
                                 }
                                 else if (chrs === hrs) {
                                     if (cmins > mins) {
-                                        alert('Quiz has Ended.');
-                                        window.location = '/Quizania/' + auth.currentUser.uid;
+                                        Swal.fire(
+                                            'Oops!',
+                                            'The quiz is no more available.',
+                                            'error'
+                                        ).then(() => {
+                                            window.location = '/Quizania/' + auth.currentUser.uid;
+                                        });
                                     }
                                 }
                             }

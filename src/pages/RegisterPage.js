@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { sendEmailVerification } from 'firebase/auth'
 import { auth, firestore } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
 import cover from '../components/img/loginpage.png'
 const RegisterPage = (props) => {
     const [email, setEmail] = useState('');
@@ -18,7 +19,13 @@ const RegisterPage = (props) => {
         setError('')
         createUserWithEmailAndPassword(auth, email, pass)
             .then(async (resp) => {
-                alert('Kindly verify your email and try to login again.');
+                Swal.fire(
+                    'Registered!',
+                    'Kindly verify your email and login again.',
+                    'info'
+                ).then(() => {
+                    window.location.reload(false);
+                });
                 await updateProfile(auth.currentUser, {
                     displayName: fullName,
                 }).then(() => { console.log('updated') });
@@ -27,7 +34,6 @@ const RegisterPage = (props) => {
                     email: auth.currentUser.email,
                 })
                 if (auth.currentUser !== null) {
-                    console.log('user= ', auth.currentUser);
                     await sendEmailVerification(auth.currentUser)
                         .then(() => {
                             console.log('sent');
@@ -37,7 +43,13 @@ const RegisterPage = (props) => {
                 // window.location.reload(false);
                 return;
             })
-            .catch((err) => { console.log("Error= ", err); return; });
+            .catch((err) => { 
+                Swal.fire(
+                    'Oops!',
+                    'This email address is already used.',
+                    'error'
+                )
+             });
     }
     return (
         <div id="outer-login-box">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../components/HeaderProfile'
 import { auth } from '../firebase'
+import Swal from 'sweetalert2'
 const ReportIssue = () => {
     const [issue, setIssue] = useState('');
     const submit = async (e) => {
@@ -17,11 +18,16 @@ const ReportIssue = () => {
             }
         ).then(res => res.json())
             .then(resp => {
-                alert('Issue reported. Thanks for reporting the issue we will try to fix it asap.');
+                Swal.fire(
+                    'Issue Reported!',
+                    'Thanks for reporting the issue we will try to fix it asap.',
+                    'success'
+                ).then(() => {
+                    window.location = '/Quizania/' + auth.currentUser.uid;
+                })
             }).catch((err) => {
                 console.log(err);
             })
-        window.location = '/Quizania/' + auth.currentUser.uid;
     }
     return (
         <div>

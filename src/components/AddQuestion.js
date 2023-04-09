@@ -3,6 +3,7 @@ import DisplayQuestions from '../components/DisplayQuestions'
 import { getDatabase, update, ref } from 'firebase/database'
 import { useNavigate } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
+import Swal from 'sweetalert2'
 const AddQuestion = (props) => {
     let general_instructions = props.p[0];
     console.log(general_instructions.id);
@@ -153,13 +154,16 @@ const AddQuestion = (props) => {
             QuizQuestion,
         }).then((res) => {
         }).catch((err) => { console.log(err) });
-        alert('Quiz Created');
         await update(ref(db, 'Questions/' + quiz.general_instructions.id), {
             QuizQuestion,
             key,
         }).then((res) => {
         }).catch((err) => { console.log(err) });
-        alert('Quiz Created');
+        Swal.fire(
+            'Hurray!',
+            'The Quiz is created.',
+            'success'
+        )
         navg('/' + auth.currentUser.uid);
     }
     return (

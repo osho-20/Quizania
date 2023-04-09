@@ -10,10 +10,6 @@ const Progress = () => {
   const [progress, setProgress] = useState({});
   const [cont, setCont] = useState('container');
   const [pie, setPie] = useState({});
-  // const [c, setc] = useState(0);
-  // const [i, seti] = useState(0);
-  // const [u, setu] = useState(0);
-  // const [p, setp] = useState(0);
   useEffect(() => {
     const get = async () => {
       const document = await getDoc(doc(firestore, 'creaters', auth.currentUser.uid));

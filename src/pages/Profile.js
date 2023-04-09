@@ -4,6 +4,7 @@ import photo from '../components/img/profile.jpeg'
 import { InputText } from 'primereact/inputtext'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { app } from '../firebase'
+import Swal from 'sweetalert2'
 import { getAuth, sendEmailVerification, updateEmail, updateProfile } from 'firebase/auth'
 const Profile = (props) => {
     const user = props.props;
@@ -43,7 +44,11 @@ const Profile = (props) => {
                 displayName: fullName,
                 photoURL: Photo,
             }).then(() => {
-                alert('Successfully Updated');
+                Swal.fire(
+                    'Hurray!!',
+                    'Updated Successfully.',
+                    'success'
+                )
                 setEmail(email);
                 setName(fullName);
                 return;

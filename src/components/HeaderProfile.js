@@ -7,7 +7,6 @@ import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 const HeaderProfile = (props) => {
     const user = props.p;
-    const navg = useNavigate();
     const [bar, setBar] = useState("burger-bar unclicked");
     const [menu, setMenu] = useState("menu hidden");
     const [isMenuClicked, setIsMenuClicked] = useState(false);
