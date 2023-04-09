@@ -194,7 +194,7 @@ const Quiz = (props) => {
             let count = ans.reduce((n, x) => n + (x === Number(options) + 1), 0);
             // ans.find((answer) => { check = (answer === Number(options) + 1) });
             if (opt[options] === 1 && count > 0) {
-                cnt = cnt+ count;
+                cnt = cnt + count;
             }
             else if (opt[options] === 1 && count === 0) {
                 count = -1;
