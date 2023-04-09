@@ -530,6 +530,10 @@ button:hover {
 #user-page-button {
   width: 150px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   font-size: 19px;
   color: #232830;
 }
