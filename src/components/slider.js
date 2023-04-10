@@ -10,7 +10,6 @@ import { doc, getDoc } from 'firebase/firestore'
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Link } from "react-router-dom";
 export default function SimpleSlider(props) {
-    console.log('props= ', props.p.props);
     const auth = getAuth();
     const db = getDatabase();
     const [quizs, steQuizs] = useState({ details: [] });

@@ -4,14 +4,34 @@ import { getAuth } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import Slider from '../components/slider'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import { getDatabase, ref, onValue, get } from 'firebase/database'
 const User = (props) => {
     const prop = props.props[0];
     const navg = useNavigate();
     const auth = getAuth();
     const [code, setCode] = useState('');
-    const submit = () => {
-        props.props[2](code);
-        navg('/play=' + auth.currentUser.uid);
+    const db = getDatabase();
+    const submit = async (e) => {
+        e.preventDefault();
+        const doc = ref(db, 'Questions/' + code);
+        onValue(doc, async (snap) => {
+            const q = snap.val();
+            console.log('q= ',q);
+            if (q === null || q.QuizQuestion === undefined) {
+                Swal.fire(
+                    'Empty!',
+                    'Please Enter Correct Code',
+                    'info'
+                ).then((err) => {
+                    console.log('err= ', err);
+                })
+            }
+            else {
+                props.props[2](code);
+                navg('/play=' + auth.currentUser.uid);
+            }
+        })
     }
     return (
         <div>

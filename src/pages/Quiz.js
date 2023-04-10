@@ -8,6 +8,16 @@ import Timer from '../components/Timer';
 import Clock from '../components/Clock';
 import Swal from 'sweetalert2';
 const Quiz = (props) => {
+    useEffect(() => {
+        window.addEventListener('beforeunload', alertUser)
+        return () => {
+            window.removeEventListener('beforeunload', alertUser)
+        }
+    }, []);
+    const alertUser = e => {
+        e.preventDefault()
+        e.returnValue = 'Relodaing will erase all the changes';
+    }
     const db = getDatabase();
     const [data, setData] = useState({});
     const [id, setId] = useState(0);
@@ -246,8 +256,8 @@ const Quiz = (props) => {
             array[auth.currentUser.uid] = {
                 marking: arr,
                 score,
-                name:auth.currentUser.displayName,
-                email:auth.currentUser.email,
+                name: auth.currentUser.displayName,
+                email: auth.currentUser.email,
             }
             console.log(array);
             update(doc, {
