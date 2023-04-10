@@ -46,10 +46,6 @@ const LoginPage = (props) => {
                 )
             });
     }
-    // const forgot = (e) => {
-    //     e.preventDefault();
-    //     navg('/Quiz')
-    // }
     return (
         <div id="outer-login-box" >
             <div className="login">

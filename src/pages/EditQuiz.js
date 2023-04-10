@@ -36,7 +36,6 @@ const EditQuiz = (props) => {
             setQuizs(data);
         })
         window.addEventListener('beforeunload', alertUser)
-        // window.addEventListener('afterunload', navg('/' + auth.currentUser.uid));
         return () => {
             window.removeEventListener('beforeunload', alertUser)
         }

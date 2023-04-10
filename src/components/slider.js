@@ -93,9 +93,9 @@ export default function SimpleSlider(props) {
                                     <CopyToClipboard text={key.code} style={{ width: '100px' }}>
                                         <button >Code</button>
                                     </CopyToClipboard>
-                                    <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'}><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit </button></Link>
+                                    <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'} ><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit </button></Link>
                                 </div>
-                                <button onClick={(e) => { props.p.props[3](key.code) }}><Link to='/result=true'>Result</Link></button>
+                                <button onClick={(e) => { props.p.props[3](key.code) }}><Link to='/result=true' style={{ textDecoration: 'none', color: 'black' }}>Result</Link></button>
                             </div>
                         )
                     })

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 export default function Input({ objValue, index }) {
     const { label, value, option } = objValue;
     const [opt, setOpt] = useState(0);
