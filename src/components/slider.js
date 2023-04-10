@@ -10,6 +10,7 @@ import { doc, getDoc } from 'firebase/firestore'
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Link } from "react-router-dom";
 export default function SimpleSlider(props) {
+    console.log('props= ', props.p.props);
     const auth = getAuth();
     const db = getDatabase();
     const [quizs, steQuizs] = useState({ details: [] });
@@ -37,7 +38,7 @@ export default function SimpleSlider(props) {
     var settings = {
         dots: true,
         infinite: true,
-        rows:1,
+        rows: 1,
         speed: 1500,
         arrows: false,
         autoplay: true,
@@ -95,7 +96,7 @@ export default function SimpleSlider(props) {
                                     </CopyToClipboard>
                                     <Link to={'/edit=' + auth.currentUser.uid + '/Quiz=edit'}><button style={{ width: '100px' }} onClick={(e) => { props.p.props[1](key.k) }}>Edit </button></Link>
                                 </div>
-                                <button>Result</button>
+                                <button onClick={(e) => { props.p.props[3](key.code) }}><Link to='/result=true'>Result</Link></button>
                             </div>
                         )
                     })

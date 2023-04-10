@@ -12,6 +12,7 @@ import { getDoc, doc } from 'firebase/firestore'
 import Progress from './pages/Progress'
 import ReportIssue from './pages/ReportIssue';
 import Forgot from './pages/Forgot';
+import Result from './pages/Result';
 // import Chart from './components/PieChart';
 // import Timer from './components/Timer';
 import Clock from './components/Clock';
@@ -20,6 +21,7 @@ export default function App() {
   const [keys, setKeys] = useState({ val: [] });
   const [c, setC] = useState('');
   const [code, setCode] = useState('');
+  const [res, setRes] = useState('');
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -44,7 +46,7 @@ export default function App() {
         <Routes >
           <Route path='/Quizania' element={<Home />} />
           {
-            user1 !== null ? <Route path={'/' + user1.uid} element={<User props={[user1, setC, setCode]} />} /> : <Route path='/' element={<Home />} />
+            user1 !== null ? <Route path={'/' + user1.uid} element={<User props={[user1, setC, setCode, setRes]} />} /> : <Route path='/' element={<Home />} />
           }
           {
             user1 !== null ? <Route path={'/profile=' + user1.uid} element={<Profile props={user1} />} /> : <Route path='/' element={<Home />} />
@@ -66,6 +68,9 @@ export default function App() {
           }
           {
             user1 === null ? <Route path={"/forgot=true?"} element={<Forgot />} /> : <Route path='/' element={<Home />} />
+          }
+          {
+            user1 !== null ? <Route path={"/result=true"} element={<Result p={res} />} /> : <Route path='/' element={<Home />} />
           }
         </Routes>
       </Router>

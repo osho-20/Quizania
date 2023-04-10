@@ -246,6 +246,8 @@ const Quiz = (props) => {
             array[auth.currentUser.uid] = {
                 marking: arr,
                 score,
+                name:auth.currentUser.displayName,
+                email:auth.currentUser.email,
             }
             console.log(array);
             update(doc, {
