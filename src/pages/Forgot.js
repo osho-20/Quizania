@@ -27,7 +27,7 @@ const Forgot = () => {
         <div>
             <Header />
             <div className="report">
-                <h1>Report Issue</h1>
+                <h1>Forgot Password</h1>
                 <div id="report-container">
                     <form className="report-page">
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '30px' }}>
