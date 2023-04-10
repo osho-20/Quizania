@@ -37,6 +37,7 @@ export default function SimpleSlider(props) {
     var settings = {
         dots: true,
         infinite: true,
+        rows:1,
         speed: 1500,
         arrows: false,
         autoplay: true,
