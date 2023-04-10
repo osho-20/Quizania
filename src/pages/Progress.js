@@ -14,6 +14,9 @@ const Progress = () => {
     const get = async () => {
       const document = await getDoc(doc(firestore, 'creaters', auth.currentUser.uid));
       let q = await document.data().progress;
+      if (q === undefined) {
+        q = [];
+      }
       setProgress(q);
       let c = 0, i = 0, u = 0, p = 0;
       Object.entries(q).map(([key, value]) => {
@@ -41,49 +44,55 @@ const Progress = () => {
   return (
     <div>
       <Header p={auth.currentUser} />
-      <div id="progress">
-        <div>
-          <PieChart p={[pie, '', 0, 0]} />
-          <h1 id="pie-heading">Pie Chart </h1>
-        </div>
-        <div id="outer-container">
-          {
-            Object.entries(progress)?.map(([key, prog]) => {
-              return (
-                <div id="inner-container">
-                  <div id="quiz-name" onClick={() => { change(); k === key ? setK('') : setK(key); }}>
-                    {prog[5].name.toUpperCase()}
-                    <img src={down} id="down" />
+      {
+        progress.length !== 0 ? <div id="progress">
+          <div>
+            <PieChart p={[pie, '', 0, 0]} />
+            <h1 id="pie-heading">Pie Chart </h1>
+          </div>
+          <div id="outer-container">
+            {
+              Object.entries(progress)?.map(([key, prog]) => {
+                console.log(progress);
+                return (
+                  <div id="inner-container">
+                    <div id="quiz-name" onClick={() => { change(); k === key ? setK('') : setK(key); }}>
+                      {prog[5].name.toUpperCase()}
+                      <img src={down} id="down" />
+                    </div>
+                    <div id={k === key ? 'container1' : 'container'}>
+                      <div id="row">
+                        <li id="each-progress">{prog[0].name} </li>
+                        <li id="each-progress1">{prog[0].value}</li>
+                      </div>
+                      <div id="row">
+                        <li id="each-progress">{prog[1].name} </li>
+                        <li id="each-progress1">{prog[1].value}</li>
+                      </div>
+                      <div id="row">
+                        <li id="each-progress">{prog[2].name} </li>
+                        <li id="each-progress1">{prog[2].value}</li>
+                      </div>
+                      <div id="row">
+                        <li id="each-progress">{prog[3].name} </li>
+                        <li id="each-progress1">{prog[3].value}</li>
+                      </div>
+                      <div id="row">
+                        <li id="each-progress">Score</li>
+                        <li id="each-progress1"> {prog[4].score}</li>
+                      </div>
+                    </div>
                   </div>
-                  <div id={k === key ? 'container1' : 'container'}>
-                    <div id="row">
-                      <li id="each-progress">{prog[0].name} </li>
-                      <li id="each-progress1">{prog[0].value}</li>
-                    </div>
-                    <div id="row">
-                      <li id="each-progress">{prog[1].name} </li>
-                      <li id="each-progress1">{prog[1].value}</li>
-                    </div>
-                    <div id="row">
-                      <li id="each-progress">{prog[2].name} </li>
-                      <li id="each-progress1">{prog[2].value}</li>
-                    </div>
-                    <div id="row">
-                      <li id="each-progress">{prog[3].name} </li>
-                      <li id="each-progress1">{prog[3].value}</li>
-                    </div>
-                    <div id="row">
-                      <li id="each-progress">Score</li>
-                      <li id="each-progress1"> {prog[4].score}</li>
-                    </div>
-                  </div>
-                </div>
-              )
-            })
-          }
+                )
+              })
+            }
+          </div>
+        </div> : <div>
+          <p>You haven't given any quiz.</p>
         </div>
-      </div>
+      }
     </div >
+
   )
 };
 export default Progress;

@@ -46,10 +46,10 @@ const LoginPage = (props) => {
                 )
             });
     }
-    const forgot = (e) => {
-        e.preventDefault();
-        navg('/Quiz')
-    }
+    // const forgot = (e) => {
+    //     e.preventDefault();
+    //     navg('/Quiz')
+    // }
     return (
         <div id="outer-login-box" >
             <div className="login">
@@ -70,7 +70,7 @@ const LoginPage = (props) => {
                         <div>
                             <button type="submit" id="login-button">Login</button>
                             <div style={{ margin: '0px', padding: '0px' }}>
-                                <p onClick={() => navg('/forgot')} id="forgot-link">Forgot Password</p>
+                                <p onClick={() => navg('/forgot=true')} id="forgot-link">Forgot Password</p>
                             </div>
                         </div>
                         <div>

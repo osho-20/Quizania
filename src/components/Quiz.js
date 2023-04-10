@@ -75,7 +75,6 @@ const Quiz = () => {
                     setKey(resp.name);
                     const document = doc(firestore, 'creaters', auth.currentUser.uid);
                     updateDoc(document, {
-                        name: quizCreater,
                         quizs: arrayUnion(resp.name),
                     });
                     setDis(1);

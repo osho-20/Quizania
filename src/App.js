@@ -11,6 +11,7 @@ import EditQuiz from './pages/EditQuiz';
 import { getDoc, doc } from 'firebase/firestore'
 import Progress from './pages/Progress'
 import ReportIssue from './pages/ReportIssue';
+import Forgot from './pages/Forgot';
 // import Chart from './components/PieChart';
 // import Timer from './components/Timer';
 import Clock from './components/Clock';
@@ -62,6 +63,9 @@ export default function App() {
           }
           {
             user1 !== null ? <Route path={"/report/" + user1.uid} element={<ReportIssue />} /> : <Route path='/' element={<Home />} />
+          }
+          {
+            user1 === null ? <Route path={"/forgot=true?"} element={<Forgot />} /> : <Route path='/' element={<Home />} />
           }
         </Routes>
       </Router>

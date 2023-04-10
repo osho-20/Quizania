@@ -992,6 +992,16 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   color: black;
 }
 
+#forgot-label,
+#forgot-input {
+  width: 50%;
+}
+
+#return{
+  color:wheat;
+  padding:20px;
+}
+
 @media screen and (max-width:1100px) {
 
   .register,

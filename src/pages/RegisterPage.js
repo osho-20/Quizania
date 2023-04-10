@@ -33,23 +33,20 @@ const RegisterPage = (props) => {
                     name: auth.currentUser.displayName,
                     email: auth.currentUser.email,
                 })
-                if (auth.currentUser !== null) {
-                    await sendEmailVerification(auth.currentUser)
-                        .then(() => {
-                            console.log('sent');
-                        })
-                        .catch((err) => { console.log(err) });
-                }
+                await sendEmailVerification(auth.currentUser)
+                    .then(() => {
+                        console.log('sent');
+                    })
+                    .catch((err) => { console.log(err) });
                 // window.location.reload(false);
-                return;
             })
-            .catch((err) => { 
+            .catch((err) => {
                 Swal.fire(
                     'Oops!',
                     'This email address is already used.',
                     'error'
                 )
-             });
+            });
     }
     return (
         <div id="outer-login-box">

@@ -8,8 +8,7 @@ export default function Home() {
   const [currentForm, setCurrentform] = useState('login');
   const navg = useNavigate();
   const user = auth?.currentUser;
-  console.log(user);
-  if (user !== null) {
+  if (user !== null && user.emailVerified === true) {
     navg('/' + auth.currentUser.uid);
   };
   const toggleform = (formName) => {

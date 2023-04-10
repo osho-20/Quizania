@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, onValue, update } from 'firebase/database';
 import Input from '../components/Input';
 import PieChart from '../components/PieChart';
 import { auth } from '../firebase'
+import { Link } from 'react-router-dom'
 import Timer from '../components/Timer';
 import Clock from '../components/Clock';
 import Swal from 'sweetalert2';
@@ -225,7 +226,7 @@ const Quiz = (props) => {
         e.preventDefault();
         setstTimer(1);
     }
-    const showResult = (e) => {
+    const showResult = async (e) => {
         e.preventDefault();
         setDisplayres(1);
         let arr = [];
@@ -233,6 +234,26 @@ const Quiz = (props) => {
         arr.push({ name: 'Correct', value: correct });
         arr.push({ name: 'Unattampted', value: unattampted });
         arr.push({ name: 'Partial', value: partial });
+        const doc = ref(db, 'Questions/' + props.p[1]);
+        console.log('doc= ', doc);
+        onValue(doc, async (snap) => {
+            const q = snap.val();
+            let array = q.Result;
+            if (array === undefined) {
+                array = [];
+            }
+            console.log(array);
+            array[auth.currentUser.uid] = {
+                marking: arr,
+                score,
+            }
+            console.log(array);
+            update(doc, {
+                Result: array,
+            }).then((res) => {
+                console.log('result= updated');
+            }).catch((err) => { console.log(err) });
+        });
         setPie(arr);
         setOpt({});
     }
@@ -328,6 +349,7 @@ const Quiz = (props) => {
 
                                                     </div>
                                                 </div>
+                                                <Link to={'/' + auth.currentUser.uid} id="return">Return to Homepage.</Link>
                                             </div> : <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                                                 <div id="score-board" style={{ margin: '20px', padding: '20px' }}>The quiz has Ended kindly click on result to view your result.</div>
                                                 <div id="score-board"><button onClick={showResult}>Result</button></div>

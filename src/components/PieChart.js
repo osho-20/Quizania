@@ -5,12 +5,11 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { ref, getDatabase, onValue } from 'firebase/database'
 const PieChart = (props) => {
   const db = getDatabase();
-  console.log(props.p);
   if (props.p[0].length === 5) {
     props.p[0].pop();
   }
   const COLORS = ["green", "red", "white", "blue"];
-  const update = async () => {
+  const update = async (e) => {
     const document = doc(firestore, 'creaters', auth.currentUser.uid);
     let arr = props.p[0];
     let q;
@@ -26,9 +25,16 @@ const PieChart = (props) => {
     }
     const doc1 = await getDoc(document);
     let arr1 = await doc1.data().progress;
-    arr1[props.p[1]] = arr;
+    if (arr1 === undefined) {
+      arr1 = {};
+      arr1[props.p[1]] = arr;
+    }
+    else
+      arr1[props.p[1]] = arr;
     await updateDoc(document, {
       progress: arr1,
+    }).then((res) => {
+      console.log('updated');
     });
   }
   useEffect(() => {
@@ -36,8 +42,6 @@ const PieChart = (props) => {
       update();
     }
   }, []);
-
-  console.log('props= ', props);
   return (
     <div>
       <Piechart width={730} height={400}>
