@@ -23,7 +23,7 @@ const ReportIssue = () => {
                     'Thanks for reporting the issue we will try to fix it asap.',
                     'success'
                 ).then(() => {
-                    window.location = '/Quizania/' + auth.currentUser.uid;
+                    window.location = '/Quizania';
                 })
             }).catch((err) => {
                 console.log(err);
