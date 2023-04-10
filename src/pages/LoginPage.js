@@ -5,10 +5,13 @@ import { auth } from '../firebase'
 import Swal from 'sweetalert2';
 import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
+    const navg = useNavigate();
+    if (auth.currentUser !== null && auth.currentUser.emailVerified === true) {
+        navg('/' + auth.currentUser.uid);
+    };
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [error, setError] = useState('');
-    const navg = useNavigate();
     const submit = (e) => {
         e.preventDefault();
         if (!email || !pass) {

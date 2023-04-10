@@ -5,7 +5,12 @@ import { auth, firestore } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import cover from '../components/img/loginpage.png'
+import { useNavigate } from 'react-router-dom';
 const RegisterPage = (props) => {
+    const navg = useNavigate();
+    if (auth.currentUser !== null && auth.currentUser.emailVerified === true) {
+        navg('/' + auth.currentUser.uid);
+    };
     const [email, setEmail] = useState('');
     const [fullName, setName] = useState('');
     const [pass, setPass] = useState('');
