@@ -361,7 +361,7 @@ const Quiz = (props) => {
 
                                                     </div>
                                                 </div>
-                                                <Link to={'/' + auth.currentUser.uid} id="return">Return to Homepage.</Link>
+                                                <Link to={'/user=' + auth.currentUser.displayName} id="return">Return to Homepage.</Link>
                                             </div> : <div className="score-board" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                                                 <div id="score-board" style={{ margin: '20px', padding: '20px' }}>The quiz has Ended kindly click on result to view your result.</div>
                                                 <div id="score-board"><button onClick={showResult}>Result</button></div>

@@ -39,7 +39,7 @@ const User = (props) => {
                 <div className="quiz-box">
                     <h1>Create Quiz</h1>
                     <p >Press on Create to create a quiz</p>
-                    <Link to={'/profile=' + auth.currentUser.uid + '/create=true'} style={{ textDecoration: 'none' }}><button type="submit" id="user-page-button">Create</button></Link>
+                    <Link to={'/profile=' + auth.currentUser.displayName + '/create=true'} style={{ textDecoration: 'none' }}><button type="submit" id="user-page-button">Create</button></Link>
                 </div>
                 <div className="quiz-box">
                     <h1> Start quiz</h1>

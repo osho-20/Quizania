@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const RegisterPage = (props) => {
     const navg = useNavigate();
     if (auth.currentUser !== null && auth.currentUser.emailVerified === true) {
-        navg('/' + auth.currentUser.uid);
+        navg('/user=' + auth.currentUser.displayName);
     };
     const [email, setEmail] = useState('');
     const [fullName, setName] = useState('');
@@ -43,7 +43,7 @@ const RegisterPage = (props) => {
                         console.log('sent');
                     })
                     .catch((err) => { console.log(err) });
-                // window.location.reload(false);
+                window.location.reload(false);
             })
             .catch((err) => {
                 Swal.fire(

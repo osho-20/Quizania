@@ -7,7 +7,7 @@ import cover from '../components/img/Login.png'
 const LoginPage = (props) => {
     const navg = useNavigate();
     if (auth.currentUser !== null && auth.currentUser.emailVerified === true) {
-        navg('/' + auth.currentUser.uid);
+        navg('/user=' + auth.currentUser.displayName);
     };
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -27,7 +27,7 @@ const LoginPage = (props) => {
                         'Logged In Successfully.',
                         'success'
                     )
-                    const path = '/' + resp.user.uid;
+                    const path = '/user=' + resp.user.displayName;
                     navg(path);
                     return;
                 }

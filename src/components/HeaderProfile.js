@@ -52,9 +52,9 @@ const HeaderProfile = (props) => {
                 <ul className={menu} style={{ position: 'relative', zIndex: '1' }} >
                     <li className="menu1" style={{ fontSize: '25px', paddingBottom: '35px' }}>Welcome</li>
                     <li className="menu-profile" ><img src={auth.currentUser.photoURL !== null ? auth.currentUser.photoURL : Profile} alt={Profile} id="profilephoto" /><span class="caption">{user.displayName.toUpperCase()}</span></li>
-                    <li className="menu1" id="hover-underline-animation" ><Link to={'/profile=' + user.uid} className="link-css" >Profile</Link></li>
-                    <li className="menu1" id="hover-underline-animation"><Link to={'/' + user.uid} className="link-css" >Home</Link></li>
-                    <li className="menu1" id="hover-underline-animation"><Link to={'/profile=' + user.uid + '/progress'} className="link-css" >Progress</Link></li>
+                    <li className="menu1" id="hover-underline-animation" ><Link to={'/profile=' + user.displayName} className="link-css" >Profile</Link></li>
+                    <li className="menu1" id="hover-underline-animation"><Link to={'/user=' + user.displayName} className="link-css" >Home</Link></li>
+                    <li className="menu1" id="hover-underline-animation"><Link to={'/profile=' + user.displayName + '/progress'} className="link-css" >Progress</Link></li>
                     <li className="menu1" id="hover-underline-animation"><Link to={'/report/' + user.uid} className="link-css" >Report Issue</Link></li>
                     <li className="menu1" ><button id="signout" onClick={SignOut}>Log Out</button></li>
                 </ul>
