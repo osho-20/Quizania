@@ -1027,6 +1027,7 @@ td {
   font-family: 'Poppins';
   font-weight: 100;
 }
+
 #column-sn {
   width: 100px;
   border-color: black;
@@ -1034,16 +1035,8 @@ td {
   font-weight: 100;
 }
 
-.without_ampm::-webkit-datetime-edit-ampm-field {
+input[type=time]::-webkit-datetime-edit-ampm-field {
   display: none;
-}
-input[type=time]::-webkit-clear-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  -ms-appearance:none;
-  appearance: none;
-  margin: -10px; 
 }
 
 @media screen and (max-width:1100px) {
