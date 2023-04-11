@@ -56,4 +56,4 @@ To access my project, please follow these steps:
 
 -> Type "npm start" in your console to start the project.
 
--> We hope you find the project helpful!
+We hope you find the project helpful!
