@@ -87,35 +87,35 @@ const Quiz = () => {
             <h1 style={{ color: 'white' }}>Create Quiz</h1>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Quiz Name</label>
-                <input type='text' id="create-quiz-input" value={quizName} onChange={(e) => setQuizName(e.target.value)} placeholder="Please enter the Title" disabled={dis}></input>
+                <input type='text' id="create-quiz-input" value={quizName} onChange={(e) => setQuizName(e.target.value)} placeholder="Please enter the Title" disabled={dis} required></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Description</label>
-                <textarea type='text' id="create-quiz-textarea" rows="2" value={quizDescrp} onChange={(e) => setQuizDescrp(e.target.value)} placeholder="Please enter the description" disabled={dis}></textarea>
+                <textarea type='text' id="create-quiz-textarea" rows="2" value={quizDescrp} onChange={(e) => setQuizDescrp(e.target.value)} placeholder="Please enter the description" disabled={dis} required></textarea>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Created By</label>
-                <input type='text' id="create-quiz-input" value={quizCreater} onChange={(e) => setQuizCreater(e.target.value)} placeholder="Creater's Name" disabled={dis}></input>
+                <input type='text' id="create-quiz-input" value={quizCreater} onChange={(e) => setQuizCreater(e.target.value)} placeholder="Creater's Name" disabled={dis} required></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Number of Questions</label>
-                <input type='numeric' id="create-quiz-input" value={quizNoOfQuest} onChange={(e) => setQuizNoOfQuest(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
+                <input type='numeric' id="create-quiz-input" value={quizNoOfQuest} onChange={(e) => setQuizNoOfQuest(e.target.value)} placeholder="Please enter an Integer" disabled={dis} required></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Total score</label>
-                <input type='numeric' id="create-quiz-input" value={quizScore} onChange={(e) => setQuizScore(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
+                <input type='numeric' id="create-quiz-input" value={quizScore} onChange={(e) => setQuizScore(e.target.value)} placeholder="Please enter an Integer" disabled={dis} required ></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Start Time</label>
-                <input type='datetime-local' id="create-quiz-input" onChange={(e) => setStart(e.target.value)} disabled={dis}></input>
+                <input type='datetime-local' id="create-quiz-input" onChange={(e) => setStart(e.target.value)} disabled={dis} required></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">End Time</label>
-                <input type='datetime-local' id="create-quiz-input" onChange={(e) => setEnd(e.target.value)} disabled={dis}></input>
+                <input type='datetime-local' id="create-quiz-input" onChange={(e) => setEnd(e.target.value)} disabled={dis} required></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Duration Time</label>
-                <input type='time' min='00:01' max='11:59' id="create-quiz-input" onChange={(e) => setDuration(e.target.value)} disabled={dis}></input>
+                <input type='time' id="create-quiz-input" onChange={(e) => setDuration(e.target.value)} disabled={dis} required></input>
             </div>
             {
                 err !== '' ? <p style={{ color: 'red' }}>{err}</p> : <p></p>
