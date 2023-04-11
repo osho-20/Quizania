@@ -3,7 +3,7 @@ import { auth } from '../firebase'
 import { ref, getDatabase, onValue } from 'firebase/database'
 import Header from '../components/HeaderProfile'
 const Result = (props) => {
-    const [key, setKey] = useState(props.p);
+    // const [key, setKey] = useState(props.p);
     const db = getDatabase();
     const [res, setRes] = useState();
     useEffect(() => {
@@ -38,7 +38,7 @@ const Result = (props) => {
                                     <th id='column-sn'>{i} </th>
                                     <th id='column'>{val.name} </th>
                                     <th id='column'> {val.email}</th>
-                                    <th id='column'>{val.score}</th>
+                                    <th id='column'>{val.score}   {' / '} {val?.totalmarks}</th>
                                 </tr>
                             )
 

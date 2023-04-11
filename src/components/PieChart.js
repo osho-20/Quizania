@@ -19,9 +19,8 @@ const PieChart = (props) => {
     });
     if (arr.length === 4) {
       arr.push({ 'score': props.p[2] });
-    }
-    if (arr.length === 5) {
       arr.push({ 'name': q.QuizName });
+      arr.push({ 'totalmarks': q.QuizMarks });
     }
     const doc1 = await getDoc(document);
     let arr1 = await doc1.data().progress;
@@ -41,7 +40,6 @@ const PieChart = (props) => {
       update();
     }
   }, []);
-  console.log(props.p[0]);
   return (
     <div>
       <Piechart width={730} height={400}>

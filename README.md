@@ -1,70 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The website is for quiz games where users can create, edit, and play quizzes anytime, anywhere. To get started, register with your email and verify it. Then, log in to your profile where you'll find many options.
 
-In the project directory, you can run:
+Creating a Quiz:
 
-### `npm start`
+-> Click on the "Create" button to create a quiz.
+Fill in basic details like the name of the quiz, description, creator, number of questions, marks, number of attempts, start time, end time, and quiz duration.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-> Click on the "Create" button to create your quiz.
+Add or delete questions, and click on "Submit" to save them.
+Editing a Quiz:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-> Click on "Edit" to change the basic details of your quiz or to add/delete questions.
+-> Click on "Save" to save your changes, and then click on "Submit" to submit them.
 
-### `npm test`
+Note: Don't reload or leave the site without saving and submitting, or else your changes won't be saved.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Playing a Quiz:
 
-### `npm run build`
+-> Copy the quiz code from the "My Quiz" section and send it to your friends.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-> Read the instructions, which will provide details like the number of questions, quiz marks, end time, quiz duration, and marking scheme.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-> Answer one question at a time and don't go back to the previous one.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-> Click on "See Result" to check your score and the marking of each question.
 
-### `npm run eject`
+-> Click on "Return to Home Page" when you're done.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Note: Don't reload or use dev tools during the quiz, or it may end immediately.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Other Sections:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-> In the "Profile" section, you can edit your name and email address.
 
-## Learn More
+-> In the "Progress" section, you can see the progress of your account, including the number of quizzes you've taken, overall scores, incorrect/correct/unattempted/partial scores, and the same for each quiz.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-> In the "Report Issue" section, you can report any issues you find on the website so that we can fix them ASAP.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-> The "Home" section is where you can create, edit, and play quizzes.
 
-### Code Splitting
+We hope you enjoy using our website!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+To download my project here are the instructions:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To access my project, please follow these steps:
 
-### Making a Progressive Web App
+-> Go to https://github.com/osho-20/Quizania
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+-> Clone the project to your local system.
 
-### Advanced Configuration
+-> Navigate to the directory named "QUIZ".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+-> Type "npm start" in your console to start the project.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-> We hope you find the project helpful!

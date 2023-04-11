@@ -32,6 +32,11 @@ const LoginPage = (props) => {
                     return;
                 }
                 else {
+                    await sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                            console.log('sent');
+                        })
+                        .catch((err) => { console.log(err) });
                     Swal.fire(
                         'Registered!',
                         'Kindly verify your email and login again.',

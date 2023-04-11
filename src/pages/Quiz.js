@@ -194,7 +194,7 @@ const Quiz = (props) => {
             })
         })
 
-    }, [])
+    }, []);
     const submit = async (e) => {
         e.preventDefault();
         const keys = Object.keys(opt);
@@ -257,6 +257,7 @@ const Quiz = (props) => {
                 score,
                 name: auth.currentUser.displayName,
                 email: auth.currentUser.email,
+                totalmarks: gen.qm,
             }
             console.log(array);
             update(doc, {
@@ -280,6 +281,7 @@ const Quiz = (props) => {
                             <p>{gen?.qd}</p>
                             <ul style={{ textAlign: 'left' }}>
                                 <li>Quiz contains total {gen?.tq} number of questions.</li>
+                                <li>Quiz is of total {gen?.qm} marks.</li>
                                 <li>Marks for each question is mentions after the question statement.</li>
                                 <li>For each correct option partial marks will be awarded.</li>
                                 <li>If any incorrect option is selected 0 marks will be awarded.</li>

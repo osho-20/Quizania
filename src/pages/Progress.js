@@ -79,7 +79,7 @@ const Progress = () => {
                       </div>
                       <div id="row">
                         <li id="each-progress">Score</li>
-                        <li id="each-progress1"> {prog[4].score}</li>
+                        <li id="each-progress1"> {prog[4].score} {' / '} {prog[6]?.totalmarks}</li>
                       </div>
                     </div>
                   </div>

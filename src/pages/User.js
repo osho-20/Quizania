@@ -17,7 +17,6 @@ const User = (props) => {
         const doc = ref(db, 'Questions/' + code);
         onValue(doc, async (snap) => {
             const q = snap.val();
-            console.log('q= ',q);
             if (q === null || q.QuizQuestion === undefined) {
                 Swal.fire(
                     'Empty!',
