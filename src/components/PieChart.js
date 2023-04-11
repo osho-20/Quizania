@@ -34,7 +34,6 @@ const PieChart = (props) => {
     await updateDoc(document, {
       progress: arr1,
     }).then((res) => {
-      console.log('updated');
     });
   }
   useEffect(() => {
@@ -42,6 +41,7 @@ const PieChart = (props) => {
       update();
     }
   }, []);
+  console.log(props.p[0]);
   return (
     <div>
       <Piechart width={730} height={400}>

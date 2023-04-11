@@ -201,14 +201,14 @@ const Quiz = (props) => {
         const ans = data.QuizQuestion[id].answer;
         let cnt = 0;
         for (const options of keys) {
-            // let check = false;
+
             let count = ans.reduce((n, x) => n + (x === Number(options) + 1), 0);
-            // ans.find((answer) => { check = (answer === Number(options) + 1) });
             if (opt[options] === 1 && count > 0) {
                 cnt = cnt + count;
             }
             else if (opt[options] === 1 && count === 0) {
                 count = -1;
+                cnt = -1;
                 break;
             }
         }
@@ -245,7 +245,6 @@ const Quiz = (props) => {
         arr.push({ name: 'Unattampted', value: unattampted });
         arr.push({ name: 'Partial', value: partial });
         const doc = ref(db, 'Questions/' + props.p[1]);
-        console.log('doc= ', doc);
         onValue(doc, async (snap) => {
             const q = snap.val();
             let array = q.Result;
@@ -263,7 +262,6 @@ const Quiz = (props) => {
             update(doc, {
                 Result: array,
             }).then((res) => {
-                console.log('result= updated');
             }).catch((err) => { console.log(err) });
         });
         setPie(arr);
