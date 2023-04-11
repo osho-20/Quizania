@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../components/HeaderProfile'
 import { auth, firestore } from '../firebase'
 import { getDoc, doc } from 'firebase/firestore'
-import { getDatabase, ref, onValue } from 'firebase/database'
+import { getDatabase } from 'firebase/database'
 import PieChart from '../components/PieChart'
 import down from '../components/img/download.png'
 const Progress = () => {
@@ -12,7 +12,7 @@ const Progress = () => {
   const [pie, setPie] = useState({});
   useEffect(() => {
     const get = async () => {
-      const document = await getDoc(doc(firestore, 'creaters', auth.currentUser.uid));
+      const document = await getDoc(doc(firestore, 'creaters/', auth.currentUser.uid));
       let q = await document.data().progress;
       if (q === undefined) {
         q = [];

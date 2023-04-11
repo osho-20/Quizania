@@ -26,10 +26,21 @@ const PieChart = (props) => {
     let arr1 = await doc1.data().progress;
     if (arr1 === undefined) {
       arr1 = {};
-      arr1[props.p[1]] = arr;
+      if (arr.length === 7) {
+        arr.push({ 'attempts': 1 });
+      }
     }
-    else
-      arr1[props.p[1]] = arr;
+    else {
+      if (arr.length === 7) {
+        if (arr1[props.p[1]] !== undefined) {
+          arr.push({ 'attempts': arr1[props.p[1]][7]?.attempts + 1 });
+        }
+        else {
+          arr.push({ 'attempts': 1 });
+        }
+      }
+    }
+    arr1[props.p[1]] = arr;
     await updateDoc(document, {
       progress: arr1,
     }).then((res) => {

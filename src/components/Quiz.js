@@ -10,6 +10,7 @@ const Quiz = () => {
     const [quizCreater, setQuizCreater] = useState('');
     const [quizNoOfQuest, setQuizNoOfQuest] = useState('');
     const [quizScore, setQuizScore] = useState('');
+    const [attempts, setAttempts] = useState('');
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [duration, setDuration] = useState('');
@@ -27,6 +28,7 @@ const Quiz = () => {
         const QuizCreater = quizCreater;
         const TotalQuestions = quizNoOfQuest;
         const QuizMarks = quizScore;
+        const QuizAttempts = attempts;
         const StartTime = start;
         const EndTime = end;
         const DurationTime = duration;
@@ -44,6 +46,7 @@ const Quiz = () => {
                     },
                     body: JSON.stringify({
                         id: 'null',
+                        QuizAttempts,
                     })
                 }
             ).then(res => res.json())
@@ -65,6 +68,7 @@ const Quiz = () => {
                         TotalQuestions,
                         QuizCreater,
                         QuizMarks,
+                        QuizAttempts,
                         StartTime,
                         EndTime,
                         DurationTime,
@@ -104,6 +108,10 @@ const Quiz = () => {
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Total score</label>
                 <input type='numeric' id="create-quiz-input" value={quizScore} onChange={(e) => setQuizScore(e.target.value)} placeholder="Please enter an Integer" disabled={dis} required ></input>
+            </div>
+            <div style={{ textAlign: 'left', margin: '10px' }}>
+                <label id="create-quiz-label">Number of attempts</label>
+                <input type='numeric' id="create-quiz-input" value={attempts} onChange={(e) => setAttempts(e.target.value)} placeholder="Please enter an Integer" disabled={dis} required ></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Start Time</label>

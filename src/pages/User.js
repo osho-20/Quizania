@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import Header from '../components/HeaderProfile'
 import { getAuth } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import { firestore } from '../firebase'
 import Slider from '../components/slider'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { getDatabase, ref, onValue, get } from 'firebase/database'
+import { getDatabase, ref, onValue } from 'firebase/database'
+import { getDoc, doc as doc1 } from 'firebase/firestore'
 const User = (props) => {
     const prop = props.props[0];
     const navg = useNavigate();
@@ -15,12 +17,22 @@ const User = (props) => {
     const submit = async (e) => {
         e.preventDefault();
         const doc = ref(db, 'Questions/' + code);
-        onValue(doc, async (snap) => {
+        const document = await getDoc(doc1(firestore, 'creaters/' + auth.currentUser.uid));
+        onValue(doc, (snap) => {
             const q = snap.val();
             if (q === null || q.QuizQuestion === undefined) {
                 Swal.fire(
-                    'Empty!',
+                    'Wrong',
                     'Please Enter Correct Code',
+                    'error'
+                ).then((err) => {
+                    console.log('err= ', err);
+                })
+            }
+            else if (document?.data()?.progress !== undefined && document?.data()?.progress[q.key] !== undefined && document?.data()?.progress[q.key][7]?.attempts !== undefined && document?.data()?.progress[q.key] !== undefined && document?.data()?.progress[q.key][7]?.attempts >= q?.QuizAttempts) {
+                Swal.fire(
+                    'Sorry!',
+                    'Your number of attempts is over.',
                     'info'
                 ).then((err) => {
                     console.log('err= ', err);

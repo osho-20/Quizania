@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import Timer from '../components/Timer';
 import Clock from '../components/Clock';
 import Swal from 'sweetalert2';
+import { firestore } from '../firebase';
+import { doc as doce, getDoc } from 'firebase/firestore';
 const Quiz = (props) => {
     useEffect(() => {
         window.addEventListener('beforeunload', alertUser)
@@ -27,6 +29,7 @@ const Quiz = (props) => {
     const [correct, setCorrect] = useState(0);
     const [unattampted, setUnattampted] = useState(0);
     const [score, setScore] = useState(0);
+    const [attempts, setAttempts] = useState(0);
     const [start, setStart] = useState(0);
     const [gen, setGen] = useState({});
     const [pie, setPie] = useState({});
@@ -37,14 +40,18 @@ const Quiz = (props) => {
     const size = data?.QuizQuestion?.length;
     useEffect(() => {
         const doc = ref(db, 'Questions/' + props.p[1]);
-        onValue(doc, (snap) => {
+        onValue(doc, async (snap) => {
             const q = snap.val();
             setData(q);
             const key = q.key;
             setk(key);
             const doc1 = ref(db, 'Quiz/' + key);
+            const document = await getDoc(doce(firestore, 'creaters/' + auth.currentUser.uid));
             onValue(doc1, (snap) => {
                 const q = snap.val();
+                if (document?.data()?.progress !== undefined && document?.data()?.progress[key] !== undefined && document?.data()?.progress[key][7]?.attempts !== undefined) {
+                    setAttempts(document?.data()?.progress[key][7]?.attempts);
+                }
                 setGen({
                     dt: q.DurationTime[0] + q.DurationTime[1] + ' hrs ' + q.DurationTime[3] + q.DurationTime[4] + ' mins',
                     et: q.EndTime.slice(0, 10) + ' at ' + q.EndTime.slice(11, 13) + ' hrs ' + q.EndTime.slice(14, 16) + ' mins',
@@ -54,6 +61,8 @@ const Quiz = (props) => {
                     qn: q.QuizName,
                     st: q.StartTime,
                     tq: q.TotalQuestions,
+                    qa: q.QuizAttempts,
+                    qi: q.Quizid,
                     time: Number(q.DurationTime.slice(0, 2)) * 3600 + Number(q.DurationTime.slice(3, 5)) * 60,
                 });
                 const today = new Date();
@@ -76,7 +85,7 @@ const Quiz = (props) => {
                             'The quiz has not started yet.',
                             'error'
                         ).then(() => {
-                            window.location = '/Quizania/' + auth.currentUser.uid;
+                            window.location = '/Quizania/user=' + auth.currentUser.displayName;
                         });
                     }
                     else if (cyear === year) {
@@ -86,7 +95,7 @@ const Quiz = (props) => {
                                 'The quiz has not started yet.',
                                 'error'
                             ).then(() => {
-                                window.location = '/Quizania/' + auth.currentUser.uid;
+                                window.location = '/Quizania/user=' + auth.currentUser.displayName;
                             });
                         }
                         else if (cmonth === month) {
@@ -96,7 +105,8 @@ const Quiz = (props) => {
                                     'The quiz has not started yet.',
                                     'error'
                                 ).then(() => {
-                                    window.location = '/Quizania/' + auth.currentUser.uid;
+                                    window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                                 });
                             }
                             else if (cdate === date) {
@@ -106,7 +116,8 @@ const Quiz = (props) => {
                                         'The quiz has not started yet.',
                                         'error'
                                     ).then(() => {
-                                        window.location = '/Quizania/' + auth.currentUser.uid;
+                                        window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                                     });
                                 }
                                 else if (chrs === hrs) {
@@ -116,7 +127,8 @@ const Quiz = (props) => {
                                             'The quiz has not started yet.',
                                             'error'
                                         ).then(() => {
-                                            window.location = '/Quizania/' + auth.currentUser.uid;
+                                            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                                         });
                                     }
                                 }
@@ -141,7 +153,8 @@ const Quiz = (props) => {
                             'The quiz is no more available.',
                             'error'
                         ).then(() => {
-                            window.location = '/Quizania/' + auth.currentUser.uid;
+                            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                         });
                     }
                     else if (cyear === year) {
@@ -151,7 +164,8 @@ const Quiz = (props) => {
                                 'The quiz is no more available.',
                                 'error'
                             ).then(() => {
-                                window.location = '/Quizania/' + auth.currentUser.uid;
+                                window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                             });
                         }
                         else if (cmonth === month) {
@@ -161,7 +175,8 @@ const Quiz = (props) => {
                                     'The quiz is no more available.',
                                     'error'
                                 ).then(() => {
-                                    window.location = '/Quizania/' + auth.currentUser.uid;
+                                    window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                                 });
                             }
                             else if (cdate === date) {
@@ -171,7 +186,8 @@ const Quiz = (props) => {
                                         'The quiz is no more available.',
                                         'error'
                                     ).then(() => {
-                                        window.location = '/Quizania/' + auth.currentUser.uid;
+                                        window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                                     });
                                 }
                                 else if (chrs === hrs) {
@@ -181,7 +197,8 @@ const Quiz = (props) => {
                                             'The quiz is no more available.',
                                             'error'
                                         ).then(() => {
-                                            window.location = '/Quizania/' + auth.currentUser.uid;
+                                            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+
                                         });
                                     }
                                 }
@@ -251,7 +268,6 @@ const Quiz = (props) => {
             if (array === undefined) {
                 array = [];
             }
-            console.log(array);
             array[auth.currentUser.uid] = {
                 marking: arr,
                 score,
@@ -259,7 +275,6 @@ const Quiz = (props) => {
                 email: auth.currentUser.email,
                 totalmarks: gen.qm,
             }
-            console.log(array);
             update(doc, {
                 Result: array,
             }).then((res) => {
@@ -282,6 +297,7 @@ const Quiz = (props) => {
                             <ul style={{ textAlign: 'left' }}>
                                 <li>Quiz contains total {gen?.tq} number of questions.</li>
                                 <li>Quiz is of total {gen?.qm} marks.</li>
+                                <li>You can attempt quiz {Number(gen?.qa) - attempts} times.</li>
                                 <li>Marks for each question is mentions after the question statement.</li>
                                 <li>For each correct option partial marks will be awarded.</li>
                                 <li>If any incorrect option is selected 0 marks will be awarded.</li>

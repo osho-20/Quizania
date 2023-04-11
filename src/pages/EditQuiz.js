@@ -16,6 +16,7 @@ const EditQuiz = (props) => {
     const [quizCreater, setQuizCreater] = useState('');
     const [quizNoOfQuest, setQuizNoOfQuest] = useState('');
     const [quizScore, setQuizScore] = useState('');
+    const [attempts, setAttempts] = useState('');
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [duration, setDuration] = useState('');
@@ -138,7 +139,6 @@ const EditQuiz = (props) => {
             if (ArrayofQuestions.length > 0) {
                 let t = ArrayofQuestions.pop();
                 setscore(score - t.marks);
-                console.log(ArrayofQuestions);
                 setQuiz({ ...quiz, questions: ArrayofQuestions });
                 return;
             }
@@ -149,7 +149,6 @@ const EditQuiz = (props) => {
         setOpt({ currentoption: [], answer: [] });
         setQuestionDes('');
         setEdit(0);
-        console.log(quiz.questions.length);
     }
     const AddDesc = (e) => {
         e.preventDefault();
@@ -168,30 +167,41 @@ const EditQuiz = (props) => {
     }
     const submit = async (e) => {
         e.preventDefault();
-        console.log(score, Number(quiz.general_instructions.quizScore));
         if (score !== Number(quiz.general_instructions.QuizMarks)) {
             setError('Please check your marking scheme it doesn\'t match with the total score.');
             return;
         }
         const db = getDatabase();
-        await update(ref(db, 'Quiz/' + KEY), {
+        const doc1 = ref(db, 'Quiz/' + KEY);
+        await update(doc1, {
             DurationTime: quiz.general_instructions.DurationTime,
             EndTime: quiz.general_instructions.EndTime,
             QuizCreater: quiz.general_instructions.QuizCreater,
             QuizDescription: quiz.general_instructions.QuizDescription,
             QuizMarks: quiz.general_instructions.QuizMarks,
+            QuizAttempts: quiz.general_instructions.QuizAttempts,
             QuizName: quiz.general_instructions.QuizName,
             StartTime: quiz.general_instructions.StartTime,
             TotalQuestions: quiz.general_instructions.TotalQuestions,
             QuizQuestion: quiz.questions,
         }).then((res) => {
         }).catch((err) => { console.log(err) });
+        onValue(doc1, (snap) => {
+            const data = snap.val();
+            const doc2 = ref(db, 'Questions/' + data.Quizid);
+            update(doc2, {
+                QuizQuestion: quiz.questions,
+                QuizAttempts: quiz.general_instructions.QuizAttempts,
+            }).then((res) => {
+                console.log('updated');
+            }).catch((err) => { console.log(err) });
+        })
         Swal.fire(
             'Hurray!!',
             'The Quiz Updated Successfully.',
             'success'
         )
-        navg('/' + auth.currentUser.uid);
+        navg('/user=' + auth.currentUser.displayName);
     }
     const StartEditing = async (e) => {
         e.preventDefault();
@@ -200,6 +210,7 @@ const EditQuiz = (props) => {
         setQuizCreater(quizs.QuizCreater);
         setQuizNoOfQuest(quizs.TotalQuestions);
         setQuizScore(quizs.QuizMarks);
+        setAttempts(quizs.QuizAttempts);
         setStart(quizs.StartTime);
         setEnd(quizs.EndTime);
         setDuration(quizs.DurationTime);
@@ -212,6 +223,7 @@ const EditQuiz = (props) => {
             TotalQuestions: quizs.TotalQuestions,
             QuizCreater: quizs.QuizCreater,
             QuizMarks: quizs.QuizMarks,
+            QuizAttempts: quizs.QuizAttempts,
             StartTime: quizs.StartTime,
             EndTime: quizs.EndTime,
             DurationTime: quizs.DurationTime,
@@ -222,7 +234,6 @@ const EditQuiz = (props) => {
         }
         else
             setDis(1 - dis);
-        // console.log('count= ', quiz.questions.length, Number(quizs.TotalQuestions));
     }
     const Save = async (e) => {
         e.preventDefault();
@@ -233,6 +244,7 @@ const EditQuiz = (props) => {
             TotalQuestions: quizNoOfQuest,
             QuizCreater: quizCreater,
             QuizMarks: quizScore,
+            QuizAttempts: attempts,
             StartTime: start,
             EndTime: end,
             DurationTime: duration,
@@ -240,7 +252,6 @@ const EditQuiz = (props) => {
         setQuiz({ general_instructions: arr, questions: quizs.QuizQuestion });
         setDis(1 - dis);
     }
-    // console.log('count= ', score);
     return (
         <div >
             <Header p={props.p[0]} />
@@ -273,6 +284,10 @@ const EditQuiz = (props) => {
                                 <div style={{ textAlign: 'left', margin: '10px' }}>
                                     <label id="create-quiz-label">Total score</label>
                                     <input type='numeric' id="create-quiz-input" value={quizScore} onChange={(e) => setQuizScore(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
+                                </div>
+                                <div style={{ textAlign: 'left', margin: '10px' }}>
+                                    <label id="create-quiz-label">Total Attempts</label>
+                                    <input type='numeric' id="create-quiz-input" value={attempts} onChange={(e) => setAttempts(e.target.value)} placeholder="Please enter an Integer" disabled={dis}></input>
                                 </div>
                                 <div style={{ textAlign: 'left', margin: '10px' }}>
                                     <label id="create-quiz-label">Start Time</label>
