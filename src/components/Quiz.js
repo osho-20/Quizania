@@ -115,7 +115,7 @@ const Quiz = () => {
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
                 <label id="create-quiz-label">Duration Time</label>
-                <input type='time' id="create-quiz-input" onChange={(e) => setDuration(e.target.value)} disabled={dis}></input>
+                <input type='time' id="create-quiz-input" className="without_ampm" onChange={(e) => setDuration(e.target.value)} disabled={dis}></input>
             </div>
             {
                 err !== '' ? <p style={{ color: 'red' }}>{err}</p> : <p></p>
