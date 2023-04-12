@@ -36,7 +36,7 @@ const Profile = (props) => {
                         console.log('sent');
                     })
             }
-            updateProfile(auth.currentUser, {
+            await updateProfile(auth.currentUser, {
                 displayName: fullName,
                 photoURL: Photo,
             }).then(() => {
