@@ -10,6 +10,10 @@ import Swal from 'sweetalert2';
 import { firestore } from '../firebase';
 import { doc as doce, getDoc } from 'firebase/firestore';
 const Quiz = (props) => {
+    console.log(props);
+    if (props.p[1] === '') {
+        window.location = 'Quizania/user=' + auth.currentUser.displayName;
+    }
     useEffect(() => {
         window.addEventListener('beforeunload', alertUser)
         return () => {
@@ -18,7 +22,7 @@ const Quiz = (props) => {
     }, []);
     const alertUser = e => {
         e.preventDefault()
-        // e.returnValue = 'Relodaing will erase all the changes';
+        e.returnValue = 'Relodaing will erase all the changes';
     }
     const db = getDatabase();
     const [data, setData] = useState({});
@@ -284,12 +288,6 @@ const Quiz = (props) => {
         });
         setPie(arr);
         setOpt({});
-    }
-    window.onbeforeunload = function () {
-        window.setTimeout(function () {
-            window.location = '/Quizania/user=' + auth.currentUser.displayName;
-        }, 0);
-        window.onbeforeunload = null;
     }
     window.history.pushState(null, document.title, window.location.href);
     window.addEventListener('popstate', function (event) {
