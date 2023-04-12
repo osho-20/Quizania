@@ -18,7 +18,7 @@ const Quiz = (props) => {
     }, []);
     const alertUser = e => {
         e.preventDefault()
-        e.returnValue = 'Relodaing will erase all the changes';
+        // e.returnValue = 'Relodaing will erase all the changes';
     }
     const db = getDatabase();
     const [data, setData] = useState({});
@@ -291,6 +291,11 @@ const Quiz = (props) => {
         }, 0);
         window.onbeforeunload = null;
     }
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener('popstate', function (event) {
+        event.preventDefault();
+        window.history.pushState(null, document.title, window.location.href);
+    });
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             {
