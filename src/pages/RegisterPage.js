@@ -24,13 +24,6 @@ const RegisterPage = (props) => {
         setError('')
         createUserWithEmailAndPassword(auth, email, pass)
             .then(async (resp) => {
-                Swal.fire(
-                    'Registered!',
-                    'Kindly verify your email and login again.',
-                    'info'
-                ).then(() => {
-                    window.location.reload(false);
-                });
                 await updateProfile(auth.currentUser, {
                     displayName: fullName,
                 }).then(() => { console.log('updated') });
@@ -47,7 +40,13 @@ const RegisterPage = (props) => {
                         console.log('sent');
                     })
                     .catch((err) => { console.log(err) });
-                window.location.reload(false);
+                await Swal.fire(
+                    'Registered!',
+                    'Kindly verify your email and login again.',
+                    'info'
+                ).then(() => {
+                    window.location.reload(false);
+                });
             })
             .catch((err) => {
                 Swal.fire(
