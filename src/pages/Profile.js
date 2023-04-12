@@ -11,35 +11,31 @@ const Profile = (props) => {
     const storage = getStorage(app);
     const [email, setEmail] = useState(user.email);
     const [fullName, setName] = useState(user.displayName);
-    const [pass, setPass] = useState('');
     const [error, setError] = useState('');
     const [edit, setEdit] = useState(1);
     const auth = getAuth();
     const [Photo, setPhoto] = useState(auth.currentUser.photoURL);
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
         if (email === '' || fullName === '') {
-            console.log(email, fullName);
             setError('**Please fill all fields**');
             return;
         }
         setError('')
         if (edit === 1) {
-            console.log(auth.currentUser, email);
             if (auth.currentUser.email !== email) {
-                updateEmail(auth.currentUser, email).then(() => {
+                await updateEmail(auth.currentUser, email).then(() => {
                     console.log("email updated")
                 }).catch((error) => {
                     console.log(error);
                     setError('Email already taken.');
                     return;
                 });
-                sendEmailVerification(auth.currentUser)
+                await sendEmailVerification(auth.currentUser)
                     .then(() => {
                         console.log('sent');
                     })
             }
-            console.log(fullName, auth.currentUser.photoURL);
             updateProfile(auth.currentUser, {
                 displayName: fullName,
                 photoURL: Photo,
@@ -55,27 +51,15 @@ const Profile = (props) => {
             }).catch((error) => {
                 console.log(error);
             })
-            // updatePassword(auth.currentUser, pass).then(() => {
-            //     sendPasswordResetEmail(auth, email)
-            //         .then(() => {
-            //             // Password reset email sent!
-            //             // ..
-            //         })
-            //         .catch((error) => {
-            //             console.log(error);
-            //         });
-            // }).then(() => { console.log() })
             // window.location.reload(false);
         }
 
     };
     const upload = (e) => {
-        console.log('file= ', e);
         const imgref = ref(storage, auth.currentUser.uid);
         uploadBytes(imgref, e).then(() => {
             getDownloadURL(imgref).then((url) => {
                 setPhoto(url);
-                console.log('url= ', url);
             }).catch((err) => {
                 console.log('error= ', err);
             });

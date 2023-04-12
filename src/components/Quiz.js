@@ -45,8 +45,8 @@ const Quiz = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        id: 'null',
                         QuizAttempts,
+                        uid: auth.currentUser.uid,
                     })
                 }
             ).then(res => res.json())
@@ -72,6 +72,7 @@ const Quiz = () => {
                         StartTime,
                         EndTime,
                         DurationTime,
+                        uid: auth.currentUser.uid,
                     })
                 }
             ).then(res => res.json())

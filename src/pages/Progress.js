@@ -53,7 +53,6 @@ const Progress = () => {
           <div id="outer-container">
             {
               Object.entries(progress)?.map(([key, prog]) => {
-                console.log(progress);
                 return (
                   <div id="inner-container">
                     <div id="quiz-name" onClick={() => { change(); k === key ? setK('') : setK(key); }}>

@@ -6,7 +6,6 @@ import { getAuth } from 'firebase/auth'
 import Swal from 'sweetalert2'
 const AddQuestion = (props) => {
     let general_instructions = props.p[0];
-    console.log(general_instructions.id);
     const auth = getAuth();
     const navg = useNavigate();
     const key = props.p[1];
@@ -96,7 +95,6 @@ const AddQuestion = (props) => {
             setAns('');
             setError('');
             setEdit(0);
-            console.log(quiz.questions.length, quiz.general_instructions);
         }
     }
     const Deletequest = (e) => {
@@ -113,7 +111,6 @@ const AddQuestion = (props) => {
             if (ArrayofQuestions.length > 0) {
                 let t = ArrayofQuestions.pop();
                 setscore(score - t.marks);
-                console.log(ArrayofQuestions);
                 setQuiz({ ...quiz, questions: ArrayofQuestions });
                 return;
             }
@@ -124,7 +121,6 @@ const AddQuestion = (props) => {
         setOpt({ currentoption: [], answer: [] });
         setQuestionDes('');
         setEdit(0);
-        console.log(quiz.questions.length);
     }
     const AddDesc = (e) => {
         e.preventDefault();
@@ -143,7 +139,6 @@ const AddQuestion = (props) => {
     }
     const submit = async (e) => {
         e.preventDefault();
-        console.log(score, Number(quiz.general_instructions.quizScore));
         if (score !== Number(quiz.general_instructions.quizScore)) {
             setError('**Please check your marking scheme it doesn\'t match with the total score.**');
             return;
@@ -164,7 +159,7 @@ const AddQuestion = (props) => {
             'The Quiz is created.',
             'success'
         )
-        navg('/' + auth.currentUser.uid);
+        navg('/user=' + auth.currentUser.displayName);
     }
     return (
         <div className="Quiz-descrp">

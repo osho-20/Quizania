@@ -35,7 +35,6 @@ const Result = (props) => {
                     </tr>
                     {
                         res !== undefined ? Object.entries(res)?.map(([key, val]) => {
-                            console.log('val=', val.name, key);
                             i = i + 1;
                             return (
                                 <tr>
