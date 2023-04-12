@@ -87,7 +87,7 @@ const Progress = () => {
             }
           </div>
         </div> : <div>
-          <p>You haven't given any quiz.</p>
+          <h1 style={{ color: 'white' }}>You haven't given any quiz.</h1>
         </div>
       }
     </div >
