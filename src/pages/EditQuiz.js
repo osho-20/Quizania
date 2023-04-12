@@ -252,6 +252,12 @@ const EditQuiz = (props) => {
         setQuiz({ general_instructions: arr, questions: quizs.QuizQuestion });
         setDis(1 - dis);
     }
+    window.onbeforeunload = function () {
+        window.setTimeout(function () {
+            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+        }, 0);
+        window.onbeforeunload = null;
+    }
     return (
         <div >
             <Header p={props.p[0]} />

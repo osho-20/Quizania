@@ -13,9 +13,6 @@ import Progress from './pages/Progress'
 import ReportIssue from './pages/ReportIssue';
 import Forgot from './pages/Forgot';
 import Result from './pages/Result';
-// import Chart from './components/PieChart';
-// import Timer from './components/Timer';
-import Clock from './components/Clock';
 export default function App() {
   const [user1, setUser] = useState('');
   const [keys, setKeys] = useState({ val: [] });
@@ -45,34 +42,16 @@ export default function App() {
       <Router basename='/Quizania'>
         <Routes >
           <Route path='/Quizania' element={<Home />} />
-          {
-            user1 !== null ? <Route path={'/user=' + user1.displayName} element={<User props={[user1, setC, setCode, setRes]} />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={'/profile=' + user1.displayName} element={<Profile props={user1} />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={'/profile=' + user1.displayName + '/create=true'} element={<Create props={user1} />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={"/edit=" + user1.displayName + '/' + c + '/Quiz=edit'} element={<EditQuiz p={[user1, c]} />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={"/play=" + user1.uid} element={<Quiz p={[user1, code]} />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={"/profile=" + user1.displayName + '/progress'} element={<Progress />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={"/report/" + user1.uid} element={<ReportIssue />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 === null ? <Route path={"/forgot=true?"} element={<Forgot />} /> : <Route path='/' element={<Home />} />
-          }
-          {
-            user1 !== null ? <Route path={"/result=true"} element={<Result p={res} />} /> : <Route path='/' element={<Home />} />
-          }
-          <Route Component={Home}></Route>
+          <Route path={'/user=' + user1?.displayName} element={<User props={[user1, setC, setCode, setRes]} />} />
+          <Route path={'/profile=' + user1?.displayName} element={<Profile props={user1} />} />
+          <Route path={'/profile=' + user1?.displayName + '/create=true'} element={<Create props={user1} />} />
+          <Route path={"/edit=" + user1?.displayName + '/' + c + '/Quiz=edit'} element={<EditQuiz p={[user1, c]} />} />
+          <Route path={"/play=" + user1?.uid} element={<Quiz p={[user1, code]} />} />
+          <Route path={"/profile=" + user1?.displayName + '/progress'} element={<Progress />} />
+          <Route path={"/report/" + user1?.uid} element={<ReportIssue />} />
+          <Route path={"/forgot=true?"} element={<Forgot />} />
+          <Route path={"/result=true"} element={<Result p={res} />} />
+          <Route path={'/*'} element={<Home />} />
         </Routes>
       </Router>
     </div>

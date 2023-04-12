@@ -36,8 +36,8 @@ export default function SimpleSlider(props) {
     }, []);
     var settings = {
         dots: true,
-        infinite: false,
-        speed: 1500,
+        infinite: true,
+        speed: 1000,
         arrows: false,
         autoplay: true,
         slidesToShow: 5,
@@ -76,14 +76,12 @@ export default function SimpleSlider(props) {
             }
         ]
     };
-
     return (
         <div>
             <h1 >My Quiz</h1>
             <Slider {...settings}>
                 {
                     quizs?.details?.map((key) => {
-
                         return (
                             <div>
                                 <img src={Quiz} style={{ padding: '20px' }} />

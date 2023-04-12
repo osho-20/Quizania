@@ -3,7 +3,6 @@ import { auth } from '../firebase'
 import { ref, getDatabase, onValue } from 'firebase/database'
 import Header from '../components/HeaderProfile'
 const Result = (props) => {
-    // const [key, setKey] = useState(props.p);
     const db = getDatabase();
     const [res, setRes] = useState();
     useEffect(() => {
@@ -13,10 +12,15 @@ const Result = (props) => {
         })
     }, []);
     if (props.p === '') {
-        window.location = '/Quizania/' + auth.currentUser.uid;
+        window.location = '/Quizania/user=' + auth.currentUser.displayName;
     }
     let i = 0;
-    console.log(res);
+    window.onbeforeunload = function () {
+        window.setTimeout(function () {
+            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+        }, 0);
+        window.onbeforeunload = null;
+    }
     return (
         <div>
             <Header p={auth.currentUser} />

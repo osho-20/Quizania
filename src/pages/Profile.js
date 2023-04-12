@@ -83,6 +83,12 @@ const Profile = (props) => {
             console.log('error2= ', err);
         })
     };
+    window.onbeforeunload = function () {
+        window.setTimeout(function () {
+            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+        }, 0);
+        window.onbeforeunload = null;
+    }
     return (
         <div >
             <Header p={auth.currentUser} />

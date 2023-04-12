@@ -86,6 +86,12 @@ const Quiz = () => {
             setErr('Quiz Created');
         }
     }
+    window.onbeforeunload = function () {
+        window.setTimeout(function () {
+            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+        }, 0);
+        window.onbeforeunload = null;
+    }
     return (
         <div className="Quiz-descrp">
             <h1 style={{ color: 'white' }}>Create Quiz</h1>

@@ -51,6 +51,12 @@ const PieChart = (props) => {
       update();
     }
   }, []);
+  window.onbeforeunload = function () {
+    window.setTimeout(function () {
+      window.location = '/Quizania/user=' + auth.currentUser.displayName;
+    }, 0);
+    window.onbeforeunload = null;
+  }
   return (
     <div>
       <Piechart width={730} height={400}>

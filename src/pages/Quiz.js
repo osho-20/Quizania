@@ -283,6 +283,12 @@ const Quiz = (props) => {
         setPie(arr);
         setOpt({});
     }
+    window.onbeforeunload = function () {
+        window.setTimeout(function () {
+            window.location = '/Quizania/user=' + auth.currentUser.displayName;
+        }, 0);
+        window.onbeforeunload = null;
+    }
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             {
