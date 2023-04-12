@@ -129,7 +129,7 @@ const Quiz = () => {
                 <input type='datetime-local' id="create-quiz-input" onChange={(e) => setEnd(e.target.value)} disabled={dis} required></input>
             </div>
             <div style={{ textAlign: 'left', margin: '10px' }}>
-                <label id="create-quiz-label">Duration Time</label>
+                <label id="create-quiz-label">Duration Time(hh:mm)</label>
                 <input type='time' id="create-quiz-input" onChange={(e) => setDuration(e.target.value)} disabled={dis} required></input>
             </div>
             {
