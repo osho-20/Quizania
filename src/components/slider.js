@@ -36,7 +36,7 @@ export default function SimpleSlider(props) {
     }, []);
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 1000,
         arrows: false,
         autoplay: true,

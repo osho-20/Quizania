@@ -37,6 +37,10 @@ const RegisterPage = (props) => {
                 await setDoc(doc(firestore, 'creaters', auth.currentUser.uid), {
                     name: auth.currentUser.displayName,
                     email: auth.currentUser.email,
+                }).then(() => {
+                    console.log('created');
+                }).catch((err) => {
+                    console.log(err);
                 })
                 await sendEmailVerification(auth.currentUser)
                     .then(() => {

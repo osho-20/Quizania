@@ -278,7 +278,9 @@ const Quiz = (props) => {
             update(doc, {
                 Result: array,
             }).then((res) => {
-            }).catch((err) => { console.log(err) });
+            }).catch((err) => {
+                console.log(err)
+            });
         });
         setPie(arr);
         setOpt({});
