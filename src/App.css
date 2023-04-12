@@ -857,7 +857,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 #container1 {
-  width: 90%;
+  width: 75%;
   background-color: white;
   color: black;
   transition: all 0.5s ease-in-out;
@@ -873,8 +873,8 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 #each-progress {
   list-style-type: none;
   margin: 10px;
-  width: 90%;
-  text-align: left;
+  width: 75%;
+  text-align: center;
   padding: 20px;
 }
 
@@ -890,10 +890,10 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   background-color: #393F47;
   text-align: left;
   padding: 20px;
-  width: 90%;
+  width: 75%;
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
 }
 
@@ -912,6 +912,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+  margin:20px;
 }
 
 #inner-container {
@@ -1310,8 +1311,9 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
   #each-progress {
     margin: 10px;
     width: 250px;
-    text-align: left;
+    text-align: center;
     padding: 20px;
+    font-size: 12px;
   }
 
   #each-progress1 {
@@ -1320,6 +1322,8 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
     text-align: left;
     padding: 20px;
     text-align: center;
+    font-size: 12px;
+
   }
 
   #progress {
