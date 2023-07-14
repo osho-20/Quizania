@@ -49,7 +49,7 @@ export default function App() {
           <Route path={"/play=" + user1?.uid} element={<Quiz p={[user1, code]} />} />
           <Route path={"/profile=" + user1?.displayName + '/progress'} element={<Progress />} />
           <Route path={"/report/" + user1?.uid} element={<ReportIssue />} />
-          <Route path={"/forgot=true?"} element={<Forgot />} />
+          <Route path={"/forgot"} element={<Forgot />} />
           <Route path={"/result=true"} element={<Result p={res} />} />
           <Route path={'/*'} element={<Home />} />
         </Routes>

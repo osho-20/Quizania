@@ -74,7 +74,7 @@ const LoginPage = (props) => {
                         <div>
                             <button type="submit" id="login-button">Login</button>
                             <div style={{ margin: '0px', padding: '0px' }}>
-                                <p onClick={() => navg('/forgot=true')} id="forgot-link">Forgot Password</p>
+                                <p onClick={() => navg('/forgot')} id="forgot-link">Forgot Password</p>
                             </div>
                         </div>
                         <div>
