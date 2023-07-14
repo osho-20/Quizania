@@ -6,7 +6,7 @@ const ReportIssue = () => {
     const [issue, setIssue] = useState('');
     const submit = async (e) => {
         e.preventDefault();
-        await fetch('https://quizania-cafe7-default-rtdb.firebaseio.com/ReportIssue.json',
+        await fetch(process.env.REACT_APP_ReportIssue,
             {
                 method: 'POST',
                 headers: {

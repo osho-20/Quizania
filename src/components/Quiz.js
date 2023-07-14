@@ -38,7 +38,7 @@ const Quiz = () => {
                 return;
             }
             let id = '';
-            await fetch('https://quizania-cafe7-default-rtdb.firebaseio.com/Questions.json',
+            await fetch(process.env.REACT_APP_Questions,
                 {
                     method: 'POST',
                     headers: {
@@ -55,7 +55,7 @@ const Quiz = () => {
                     setDis(1);
                 })
             setQuiz({ id: id, quizName, quizDescrp, quizCreater, quizNoOfQuest, quizScore });
-            await fetch('https://quizania-cafe7-default-rtdb.firebaseio.com/Quiz.json',
+            await fetch(process.env.REACT_APP_Quiz,
                 {
                     method: 'POST',
                     headers: {
